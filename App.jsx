@@ -1,16 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet, LogBox } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
-import stackNavigator from './navigations/stackNavigator';
+import StackNavigator from './navigations/StackNavigator';
 
-import tabNavigator from './navigations/tabNavigator';
+export default function App() {
+  LogBox.ignoreLogs(['Warning: ...']);
 
-const Stack = createStackNavigator();
-return (
-  <NavigationContainer>
-    {/* <StatusBar backgroundColor="white" style="black" /> */}
-    <StackNavigator />
-  </NavigationContainer>
-);
+  return (
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
+  );
+}
+
+const styles = StyleSheet.create({});
