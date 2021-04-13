@@ -17,21 +17,18 @@ import Loading from './Loading';
 const data = require('../data.json');
 
 export default function DoctorPage({ navigation }) {
-  const [DoctorLists, setDoctorLists] = useState(data.results);
+  const [DoctorLists, setDoctorLists] = useState();
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      download();
-      setReady(true);
-    });
-  }, [2000]);
+    download();
+  }, []);
 
   const download = async () => {
     const result = await getDoctorList();
     console.log(result);
-
     setDoctorLists(result);
+    setReady(true);
   };
 
   // console.log(data.result);
@@ -44,10 +41,8 @@ export default function DoctorPage({ navigation }) {
           <View style={styles.ListCard}>
             {data.hurtList.map((content, i) => {
               return (
-                <TouchableOpacity style={styles.HurtCard}>
-                  <Text style={styles.ListText} key={i}>
-                    {content.title}
-                  </Text>
+                <TouchableOpacity style={styles.HurtCard} key={i}>
+                  <Text style={styles.ListText}>{content.title}</Text>
                 </TouchableOpacity>
               );
             })}
