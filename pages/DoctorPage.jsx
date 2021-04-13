@@ -1,5 +1,5 @@
 import { Container } from 'native-base';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,15 +10,35 @@ import {
   ScrollView,
 } from 'react-native';
 
-// import data from '../data.json';
+import { getDoctorList } from '../config/BackData';
+import DoctorCard from '../components/DoctorCard';
+import Loading from './Loading';
+
 const data = require('../data.json');
 
-// import DoctorCard from '../components/DoctorCard';
+export default function DoctorPage({ navigation }) {
+  const [DoctorLists, setDoctorLists] = useState(data.results);
+  const [ready, setReady] = useState(false);
 
-export default function DoctorPage() {
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      download();
+      setReady(true);
+    });
+  }, [2000]);
+
+  const download = async () => {
+    const result = await getDoctorList();
+    console.log(result);
+
+    setDoctorLists(result);
+  };
+
+  // console.log(data.result);
+  return ready ? (
     <Container style={styles.container}>
       <Text style={styles.tmphead}>Counsultants</Text>
+
       <ScrollView>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.ListCard}>
@@ -33,35 +53,24 @@ export default function DoctorPage() {
             })}
           </View>
         </ScrollView>
-
-        {/* <Doctorcard
-          img={
-            'https://img5.yna.co.kr/etc/inner/KR/2020/05/27/AKR20200527146300005_03_i_P2.jpg'
-          }
-          name={'채송화'}
-        /> */}
-
-        <TouchableOpacity style={styles.DoctorCard}>
-          {/* 상담사 사진 */}
-          <Image
-            source={{
-              uri:
-                'https://img5.yna.co.kr/etc/inner/KR/2020/05/27/AKR20200527146300005_03_i_P2.jpg',
-            }}
-            style={styles.DoctorImage}
-          />
-          {/* 상담사 이름 */}
-          <Text style={styles.DoctorName}>채송화</Text>
-        </TouchableOpacity>
+        {DoctorLists.map((DoctorList, i) => {
+          return (
+            <DoctorCard
+              DoctorList={DoctorList}
+              key={i}
+              navigation={navigation}
+            />
+          );
+        })}
       </ScrollView>
     </Container>
+  ) : (
+    <Loading />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#E9F160',
-  },
+  container: {},
   tmphead: {
     margin: 30,
     textAlign: 'center',
@@ -97,6 +106,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderWidth: 0.1,
     borderRadius: 8,
+    backgroundColor: 'white',
   },
   DoctorImage: {
     height: 160,

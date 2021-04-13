@@ -12,8 +12,12 @@ import {
   WebView,
   TextPropTypes,
   Button,
+  ImageBackground,
 } from 'react-native';
 import HeaderComponent from '../components/HeaderComponent';
+
+import back from '../assets/back.png';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function HomePage({ navigation }) {
   return (
@@ -34,40 +38,65 @@ export default function HomePage({ navigation }) {
       /> */}
 
       {/* <SurveyLinkPage /> */}
-      <Image style={styles.Message} source={require('../assets/Message.png')} />
-      <View
-        style={{
-          flex: 1,
-          maraginbottom: 150,
-          justifyContent: 'space-evenly',
-          alignItems: 'center',
-          marginVertical: 50,
-        }}
-      >
-        <GradientButton
-          style={{ marginTop: 200 }}
-          position={'absolute'}
-          text="당신의 마음을 알아보세요"
-          textStyle={{ fontSize: 20 }}
-          gradientBegin="#874f00"
-          gradientEnd="#f5ba57"
-          gradientDirection="diagonal"
-          height={60}
-          width={300}
-          radius={15}
-          impact
-          impactStyle="Light"
-          onPressAction={() => navigation.navigate('SurveyPage')}
+      <ScrollView>
+        <Image
+          style={styles.Message}
+          source={require('../assets/Message.png')}
         />
-        <GradientButton
-          text="마인드케어 체험해보기"
-          width="70%"
-          style={{ marginTop: 50 }}
-          blueMarine
-          impact
-          onPressAction={() => Linking.openURL(`tel:01051252908`)}
-        />
-      </View>
+        <View
+          style={{
+            flex: 1,
+            maraginbottom: 150,
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+            marginVertical: 50,
+          }}
+        >
+          <TouchableOpacity>
+            <ImageBackground
+              source={back}
+              style={{
+                marginTop: 120,
+                borderRadius: 10,
+                width: 400,
+                height: 300,
+                resizeMode: 'contain',
+
+                opacity: 0.8,
+              }}
+            >
+              <Text style={{ fontSize: 20, margin: 20, color: 'white' }}>
+                내 마음이 힘든건지{'\n'}모르겠어요
+              </Text>
+            </ImageBackground>
+          </TouchableOpacity>
+
+          <GradientButton
+            style={{ marginTop: 200 }}
+            position={'absolute'}
+            text="당신의 마음을 알아보세요"
+            textStyle={{ fontSize: 20 }}
+            gradientBegin="#874f00"
+            gradientEnd="#f5ba57"
+            gradientDirection="diagonal"
+            height={60}
+            width={300}
+            radius={15}
+            impact
+            impactStyle="Light"
+            onPressAction={() => navigation.navigate('SurveyPage')}
+          />
+
+          <GradientButton
+            text="마인드케어 체험해보기"
+            width="70%"
+            style={{ marginTop: 50 }}
+            blueMarine
+            impact
+            onPressAction={() => Linking.openURL(`tel:01051252908`)}
+          />
+        </View>
+      </ScrollView>
     </Container>
   );
 }
