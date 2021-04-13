@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { Ionicons } from '@expo/vector-icons';
 
 import HomePage from '../pages/HomePage';
@@ -20,6 +21,8 @@ const TabNavigator = () => {
             iconName += 'home-sharp';
           } else if (route.name === 'Doctor') {
             iconName += 'people';
+          } else if (route.name === 'MyPage') {
+            iconName += 'menu';
           }
 
           return (
