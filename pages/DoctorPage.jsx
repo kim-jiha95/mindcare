@@ -1,3 +1,4 @@
+import { Container } from 'native-base';
 import React from 'react';
 import {
   StyleSheet,
@@ -29,6 +30,7 @@ const data = require('../data.json');
 // }
 
 export default function DoctorPage() {
+  <HeaderComponent />;
   return (
     <Container style={styles.container}>
       <Text style={styles.tmphead}>Counsultants</Text>
