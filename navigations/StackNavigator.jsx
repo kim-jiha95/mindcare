@@ -13,8 +13,8 @@ const StackNavigator = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="DoctorDetailPage" component={DoctorDetailPage} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
+      <Stack.Screen name="DoctorDetailPage" component={DoctorDetailPage} />
       <Stack.Screen name="SurveyPage" component={SurveyPage} />
     </Stack.Navigator>
   );

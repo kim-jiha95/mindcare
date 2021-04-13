@@ -7,30 +7,15 @@ import {
   TouchableOpacity,
   Alert,
   Image,
+  ScrollView,
 } from 'react-native';
-import { Container } from 'native-base';
-import { ScrollView } from 'react-native-gesture-handler';
-import Doctorcard from '../components/DoctorCard';
 
+// import data from '../data.json';
 const data = require('../data.json');
 
-// function getCheckboxValue() {
-//   // 선택된 목록 가져오기
-//   const query = 'input[name="animal"]:checked';
-//   const selectedEls = document.querySelectorAll(query);
-
-//   // 선택된 목록에서 value 찾기
-//   let result = '';
-//   selectedEls.forEach((el) => {
-//     result += el.value + ' ';
-//   });
-
-//   // 출력
-//   document.getElementById('result').innerText = result;
-// }
+// import DoctorCard from '../components/DoctorCard';
 
 export default function DoctorPage() {
-  <HeaderComponent />;
   return (
     <Container style={styles.container}>
       <Text style={styles.tmphead}>Counsultants</Text>
@@ -39,10 +24,7 @@ export default function DoctorPage() {
           <View style={styles.ListCard}>
             {data.hurtList.map((content, i) => {
               return (
-                <TouchableOpacity
-                  style={styles.HurtCard}
-                  // onPress={getCheckboxValue}
-                >
+                <TouchableOpacity style={styles.HurtCard}>
                   <Text style={styles.ListText} key={i}>
                     {content.title}
                   </Text>
