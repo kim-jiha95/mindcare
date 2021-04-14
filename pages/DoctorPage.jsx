@@ -31,12 +31,11 @@ export default function DoctorPage({ navigation }) {
     setReady(true);
   };
 
-  // console.log(data.result);
   return ready ? (
     <Container style={styles.container}>
       <Text style={styles.tmphead}>Counsultants</Text>
-
       <ScrollView>
+        {/* 고민카테고리 */}
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.ListCard}>
             {data.hurtList.map((content, i) => {
@@ -48,6 +47,8 @@ export default function DoctorPage({ navigation }) {
             })}
           </View>
         </ScrollView>
+
+        {/* 상담사 리스트 */}
         {DoctorLists.map((DoctorList, i) => {
           return (
             <DoctorCard

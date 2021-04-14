@@ -13,3 +13,16 @@ export async function getDoctorList() {
         Alert.alert('카테고리를 불러올 수 없습니다 :(');
     }
 }
+
+// doctorlist 받아오기
+export async function getDoctorDetail(id) {
+    try {
+        const result = await axios.get(host + '/api/doctors' + {
+            id
+        });
+        return result.data.results
+
+    } catch (err) {
+        Alert.alert('카테고리를 불러올 수 없습니다 :(');
+    }
+}
