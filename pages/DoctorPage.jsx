@@ -5,12 +5,9 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Alert,
   Image,
   ScrollView,
 } from 'react-native';
-// import { getDoctorList } from '../config/BackData';
-// import DoctorCard from '../components/DoctorCard';
 
 import { getDoctorList } from '../config/BackData';
 import DoctorCard from '../components/DoctorCard';
@@ -28,17 +25,16 @@ export default function DoctorPage({ navigation }) {
 
   const download = async () => {
     const result = await getDoctorList();
-    console.log(result);
+    // console.log(result);
     setDoctorLists(result);
     setReady(true);
   };
 
-  // console.log(data.result);
   return ready ? (
     <Container style={styles.container}>
       <Text style={styles.tmphead}>Counsultants</Text>
-
       <ScrollView>
+        {/* 고민카테고리 */}
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.ListCard}>
             {data.hurtList.map((content, i) => {
@@ -50,6 +46,8 @@ export default function DoctorPage({ navigation }) {
             })}
           </View>
         </ScrollView>
+
+        {/* 상담사 리스트 */}
         {DoctorLists.map((DoctorList, i) => {
           return (
             <DoctorCard

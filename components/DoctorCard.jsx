@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  Alert,
-  Image,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 
 export default function DoctorCard({ navigation, DoctorList }) {
   return (
@@ -38,7 +31,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   DoctorName: {
-    fontSize: 40,
+    fontSize: 30,
     paddingLeft: 30,
     alignSelf: 'center',
   },

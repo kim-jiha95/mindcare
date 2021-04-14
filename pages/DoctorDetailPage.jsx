@@ -6,7 +6,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Alert,
   Linking,
 } from 'react-native';
 import Loading from './Loading';
@@ -15,10 +14,10 @@ import { getDoctorDetail } from '../config/BackData';
 
 export default function DoctorDetailPage({ navigation, route }) {
   const DoctorInfo = route.params;
-  console.log(DoctorInfo);
 
   const [DoctorDetail, setDoctorDetail] = useState();
   const [ready, setReady] = useState(false);
+  // console.log(DoctorDetail);
 
   useEffect(() => {
     download();
@@ -26,23 +25,20 @@ export default function DoctorDetailPage({ navigation, route }) {
 
   const download = async () => {
     const result = await getDoctorDetail(DoctorInfo.id);
+    console.log(result);
     setDoctorDetail(result);
     setReady(true);
   };
 
-  <HeaderComponent />;
+  // <HeaderComponent />;
   return ready ? (
     <Container>
       {/* <TouchableOpacity style={styles.DoctorCard}> */}
       <HeaderComponent />
-      <Image style={styles.Doctor} source={DoctorDetail.img} />
-      <Text style={styles.DoctorName}>강지희{DoctorDetail.name}</Text>
-      <Text style={styles.DoctorPart}>
-        건강의학과,건강증진센터{DoctorDetail.careers}
-      </Text>
-      <Text style={styles.DoctorMajor}>
-        복부영상의학·{DoctorDetail.specialties}
-      </Text>
+      <Image style={styles.DoctorImage} source={{ uri: DoctorDetail.img }} />
+      <Text style={styles.DoctorName}>{DoctorDetail.name}</Text>
+      <Text style={styles.DoctorPart}>{DoctorDetail.careers}</Text>
+      <Text style={styles.DoctorMajor}>{DoctorDetail.specialties}</Text>
       {/* </TouchableOpacity> */}
       {/* <Text style={styles.Doctorprofile}>
         dr. Gilang is one of the best doctors in the Persahabatan Hospital. He
@@ -67,12 +63,13 @@ export default function DoctorDetailPage({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  Doctor: {
-    width: 250,
-    height: 200,
+  DoctorImage: {
+    width: 300,
+    height: 300,
     left: 60,
     top: 60,
     borderRadius: 15,
+    resizeMode: 'cover',
   },
   DoctorName: {
     left: 130,
