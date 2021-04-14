@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   DoctorName: {
-    fontSize: 40,
+    fontSize: 30,
     paddingLeft: 30,
     alignSelf: 'center',
   },
