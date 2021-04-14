@@ -5,12 +5,9 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Alert,
   Image,
   ScrollView,
 } from 'react-native';
-// import { getDoctorList } from '../config/BackData';
-// import DoctorCard from '../components/DoctorCard';
 
 import { getDoctorList } from '../config/BackData';
 import DoctorCard from '../components/DoctorCard';
@@ -28,7 +25,7 @@ export default function DoctorPage({ navigation }) {
 
   const download = async () => {
     const result = await getDoctorList();
-    console.log(result);
+    // console.log(result);
     setDoctorLists(result);
     setReady(true);
   };
