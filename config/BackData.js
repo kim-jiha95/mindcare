@@ -12,3 +12,19 @@ export async function getDoctorList() {
     Alert.alert('카테고리를 불러올 수 없습니다 :(');
   }
 }
+
+export async function getDoctorDetail(id) {
+  try {
+    // const result = await axios.post(host + '/api/doctors' + id);
+    const result = await axios({
+      method: 'post',
+      url: host + '/api/doctors',
+      data: {
+        id: id,
+      },
+    });
+    return result.data.results;
+  } catch (err) {
+    Alert.alert('카테고리를 불러올 수 없습니다 :(');
+  }
+}

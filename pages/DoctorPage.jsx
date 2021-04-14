@@ -9,8 +9,8 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import { getDoctorList } from '../config/BackData';
-import DoctorCard from '../components/DoctorCard';
+// import { getDoctorList } from '../config/BackData';
+// import DoctorCard from '../components/DoctorCard';
 
 import { getDoctorList } from '../config/BackData';
 import DoctorCard from '../components/DoctorCard';
@@ -41,7 +41,7 @@ export default function DoctorPage({ navigation }) {
       <ScrollView>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.ListCard}>
-            {data.hurtList.map((DoctorList, i) => {
+            {data.hurtList.map((content, i) => {
               return (
                 <TouchableOpacity style={styles.HurtCard} key={i}>
                   <Text style={styles.ListText}>{content.title}</Text>
