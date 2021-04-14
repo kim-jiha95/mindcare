@@ -49,8 +49,8 @@ export default function HomePage({ navigation }) {
           position={'absolute'}
           text="당신의 마음을 알아보세요"
           textStyle={{ fontSize: 20 }}
-          gradientBegin="#874f00"
-          gradientEnd="#f5ba57"
+          // gradientBegin="#8CFEF4"
+          // gradientEnd="#64FCD9"
           gradientDirection="diagonal"
           height={60}
           width={300}
@@ -63,7 +63,7 @@ export default function HomePage({ navigation }) {
           text="마인드케어 체험해보기"
           width="70%"
           style={{ marginTop: 50 }}
-          blueMarine
+          deepBlue
           impact
           onPressAction={() => Linking.openURL(`tel:01051252908`)}
         />

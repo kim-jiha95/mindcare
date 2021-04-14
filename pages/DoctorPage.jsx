@@ -9,20 +9,34 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import { getDoctorList } from '../config/BackData';
+import DoctorCard from '../components/DoctorCard';
 
 // import data from '../data.json';
 const data = require('../data.json');
 
 // import DoctorCard from '../components/DoctorCard';
 
-export default function DoctorPage() {
+export default function DoctorPage({ navigation }) {
+  console.disableYellowBox = true;
+  const [DoctorLists, setDoctorLists] = useState(data.results);
+
+  useEffect(() => {
+    download();
+  }, []);
+
+  const download = async () => {
+    const result = await getDoctorList();
+    setDoctorLists(result);
+  };
+
   return (
     <Container style={styles.container}>
       <Text style={styles.tmphead}>Counsultants</Text>
       <ScrollView>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.ListCard}>
-            {data.hurtList.map((content, i) => {
+            {data.hurtList.map((DoctorList, i) => {
               return (
                 <TouchableOpacity style={styles.HurtCard}>
                   <Text style={styles.ListText} key={i}>
@@ -34,16 +48,28 @@ export default function DoctorPage() {
           </View>
         </ScrollView>
 
-        {/* <Doctorcard
+        <DoctorCard
+          //  {results.map((content, i) => {
+          //   return (
+          //     <TouchableOpacity style={styles.HurtCard}>
+          //       <Text style={styles.ListText} key={i}>
+          //         {content.title}
+          //       </Text>
+          //     </TouchableOpacity>
+          //   );
+          // })}
           img={
             'https://img5.yna.co.kr/etc/inner/KR/2020/05/27/AKR20200527146300005_03_i_P2.jpg'
           }
           name={'채송화'}
-        /> */}
+        />
 
-        <TouchableOpacity style={styles.DoctorCard}>
-          {/* 상담사 사진 */}
-          <Image
+        {/* <TouchableOpacity
+          style={styles.DoctorCard}
+          onPress={() => navigation.navigate('DoctorDetailPage')}
+        > */}
+        {/* 상담사 사진 */}
+        {/* <Image
             source={{
               uri:
                 'https://img5.yna.co.kr/etc/inner/KR/2020/05/27/AKR20200527146300005_03_i_P2.jpg',
@@ -51,8 +77,8 @@ export default function DoctorPage() {
             style={styles.DoctorImage}
           />
           {/* 상담사 이름 */}
-          <Text style={styles.DoctorName}>채송화</Text>
-        </TouchableOpacity>
+        {/* {/* {/* <Text style={styles.DoctorName}>채송화</Text> */}
+        {/* </TouchableOpacity> */}
       </ScrollView>
     </Container>
   );
@@ -60,7 +86,7 @@ export default function DoctorPage() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#E9F160',
+    // backgroundColor: '#E9F160',
   },
   tmphead: {
     margin: 30,

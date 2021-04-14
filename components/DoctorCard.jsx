@@ -8,7 +8,7 @@ import {
   Image,
 } from 'react-native';
 
-export default function DoctorCard(img, name) {
+export default function DoctorCard({}) {
   return (
     <TouchableOpacity style={styles.DoctorCard}>
       {/* 상담사 사진 */}
