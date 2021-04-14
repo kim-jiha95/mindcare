@@ -25,7 +25,6 @@ export default function DoctorPage({ navigation }) {
 
   const download = async () => {
     const result = await getDoctorList();
-    // console.log(result);
     setDoctorLists(result);
     setReady(true);
   };

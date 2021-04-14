@@ -19,7 +19,6 @@ export async function getDoctorList() {
 export async function getDoctorDetail(id) {
     try {
         const result = await axios.get(host + '/api/doctors/' + id);
-        console.log(result.data.results)
         return result.data.results;
     } catch (err) {
         Alert.alert('error :(');

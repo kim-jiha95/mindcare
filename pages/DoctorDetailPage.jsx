@@ -1,4 +1,4 @@
-import { Container } from 'native-base';
+import { Container, Footer, Button } from 'native-base';
 import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   Linking,
+  Footer,
 } from 'react-native';
 import Loading from './Loading';
 import HeaderComponent from '../components/HeaderComponent';
@@ -17,7 +18,6 @@ export default function DoctorDetailPage({ navigation, route }) {
 
   const [DoctorDetail, setDoctorDetail] = useState();
   const [ready, setReady] = useState(false);
-  // console.log(DoctorDetail);
 
   useEffect(() => {
     download();
@@ -25,37 +25,26 @@ export default function DoctorDetailPage({ navigation, route }) {
 
   const download = async () => {
     const result = await getDoctorDetail(DoctorInfo.id);
-    console.log(result);
     setDoctorDetail(result);
     setReady(true);
   };
 
-  // <HeaderComponent />;
   return ready ? (
     <Container>
-      {/* <TouchableOpacity style={styles.DoctorCard}> */}
       <HeaderComponent />
       <Image style={styles.DoctorImage} source={{ uri: DoctorDetail.img }} />
       <Text style={styles.DoctorName}>{DoctorDetail.name}</Text>
       <Text style={styles.DoctorPart}>{DoctorDetail.careers}</Text>
       <Text style={styles.DoctorMajor}>{DoctorDetail.specialties}</Text>
-      {/* </TouchableOpacity> */}
-      {/* <Text style={styles.Doctorprofile}>
-        dr. Gilang is one of the best doctors in the Persahabatan Hospital. He
-        has saved more than 1000 patients in the past 3 years. He has also
-        received many awards from domestic and abroad as the best doctors. He is
-        available on a private or schedule.
-      </Text> */}
-      <TouchableOpacity
-        style={styles.Dialbtn}
-        onPress={() => Linking.openURL(`tel:01051252908`)}
-      >
-        <Image style={styles.Dial} source={require('../assets/Dial.png')} />
-      </TouchableOpacity>
 
-      {/* <View>
-        <Text>DoctorPage</Text>
-      </View> */}
+      <Footer>
+        <TouchableOpacity
+          style={styles.Dialbtn}
+          onPress={() => Linking.openURL(`tel:01051252908`)}
+        >
+          <Image style={styles.Dial} source={require('../assets/Dial.png')} />
+        </TouchableOpacity>
+      </Footer>
     </Container>
   ) : (
     <Loading />
@@ -87,6 +76,9 @@ const styles = StyleSheet.create({
   DoctorProfile: {
     left: 480,
     top: 450,
+  },
+  Dialbtn: {
+    borderWidth: 1,
   },
   Dial: {
     width: 60,
