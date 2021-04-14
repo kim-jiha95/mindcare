@@ -8,9 +8,12 @@ import {
   Image,
 } from 'react-native';
 
-export default function DoctorCard({ DoctorList }) {
+export default function DoctorCard({ navigation, DoctorList }) {
   return (
-    <TouchableOpacity style={styles.DoctorCard}>
+    <TouchableOpacity
+      style={styles.DoctorCard}
+      onPress={() => navigation.navigate('DoctorDetailPage', DoctorList)}
+    >
       {/* 상담사 사진 */}
       <Image source={{ uri: DoctorList.img }} style={styles.DoctorImage} />
       {/* 상담사 이름 */}

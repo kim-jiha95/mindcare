@@ -37,7 +37,7 @@ export default function HomePage({ navigation }) {
         onPress={() => Linking.openURL(`tel:01051252908`)}
       /> */}
 
-      {/* <SurveyLinkPage /> */}
+      {/* <SurveyLinkPage />  */}
       <ScrollView>
         <Image
           style={styles.Message}

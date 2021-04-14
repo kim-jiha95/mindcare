@@ -9,6 +9,8 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+// import { getDoctorList } from '../config/BackData';
+// import DoctorCard from '../components/DoctorCard';
 
 import { getDoctorList } from '../config/BackData';
 import DoctorCard from '../components/DoctorCard';
