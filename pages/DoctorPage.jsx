@@ -1,5 +1,5 @@
 import { Container } from 'native-base';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -12,14 +12,15 @@ import {
 import { getDoctorList } from '../config/BackData';
 import DoctorCard from '../components/DoctorCard';
 
-// import data from '../data.json';
+import { getDoctorList } from '../config/BackData';
+import DoctorCard from '../components/DoctorCard';
+import Loading from './Loading';
+
 const data = require('../data.json');
 
-// import DoctorCard from '../components/DoctorCard';
-
 export default function DoctorPage({ navigation }) {
-  console.disableYellowBox = true;
-  const [DoctorLists, setDoctorLists] = useState(data.results);
+  const [DoctorLists, setDoctorLists] = useState();
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     download();
@@ -27,67 +28,46 @@ export default function DoctorPage({ navigation }) {
 
   const download = async () => {
     const result = await getDoctorList();
+    console.log(result);
     setDoctorLists(result);
+    setReady(true);
   };
 
-  return (
+  // console.log(data.result);
+  return ready ? (
     <Container style={styles.container}>
       <Text style={styles.tmphead}>Counsultants</Text>
+
       <ScrollView>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.ListCard}>
             {data.hurtList.map((DoctorList, i) => {
               return (
-                <TouchableOpacity style={styles.HurtCard}>
-                  <Text style={styles.ListText} key={i}>
-                    {content.title}
-                  </Text>
+                <TouchableOpacity style={styles.HurtCard} key={i}>
+                  <Text style={styles.ListText}>{content.title}</Text>
                 </TouchableOpacity>
               );
             })}
           </View>
         </ScrollView>
-
-        <DoctorCard
-          //  {results.map((content, i) => {
-          //   return (
-          //     <TouchableOpacity style={styles.HurtCard}>
-          //       <Text style={styles.ListText} key={i}>
-          //         {content.title}
-          //       </Text>
-          //     </TouchableOpacity>
-          //   );
-          // })}
-          img={
-            'https://img5.yna.co.kr/etc/inner/KR/2020/05/27/AKR20200527146300005_03_i_P2.jpg'
-          }
-          name={'채송화'}
-        />
-
-        {/* <TouchableOpacity
-          style={styles.DoctorCard}
-          onPress={() => navigation.navigate('DoctorDetailPage')}
-        > */}
-        {/* 상담사 사진 */}
-        {/* <Image
-            source={{
-              uri:
-                'https://img5.yna.co.kr/etc/inner/KR/2020/05/27/AKR20200527146300005_03_i_P2.jpg',
-            }}
-            style={styles.DoctorImage}
-          />
-          {/* 상담사 이름 */}
-        {/* {/* {/* <Text style={styles.DoctorName}>채송화</Text> */}
-        {/* </TouchableOpacity> */}
+        {DoctorLists.map((DoctorList, i) => {
+          return (
+            <DoctorCard
+              DoctorList={DoctorList}
+              key={i}
+              navigation={navigation}
+            />
+          );
+        })}
       </ScrollView>
     </Container>
+  ) : (
+    <Loading />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    // backgroundColor: '#E9F160',
-  },
+  container: {},
   tmphead: {
     margin: 30,
     textAlign: 'center',
@@ -123,6 +103,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderWidth: 0.1,
     borderRadius: 8,
+    backgroundColor: 'white',
   },
   DoctorImage: {
     height: 160,

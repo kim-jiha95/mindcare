@@ -8,13 +8,13 @@ import {
   Image,
 } from 'react-native';
 
-export default function DoctorCard({}) {
+export default function DoctorCard({ DoctorList }) {
   return (
     <TouchableOpacity style={styles.DoctorCard}>
       {/* 상담사 사진 */}
-      <Image source={{ uri: img }} style={styles.DoctorImage} />
+      <Image source={{ uri: DoctorList.img }} style={styles.DoctorImage} />
       {/* 상담사 이름 */}
-      <Text style={styles.DoctorName}>{name}</Text>
+      <Text style={styles.DoctorName}>{DoctorList.name}</Text>
     </TouchableOpacity>
   );
 }

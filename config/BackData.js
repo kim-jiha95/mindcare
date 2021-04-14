@@ -2,14 +2,13 @@ import axios from 'axios';
 
 const host = 'http://15.165.205.40';
 
+// doctorlist 받아오기
 export async function getDoctorList() {
-  const result = await axios({
-    method: 'get',
-    url: 'http://15.165.205.40/api/doctors',
-    //    headers: {
-    // 	  authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDZiMDZhMDA2NjhlZTkzMjZmNGY0YzUiLCJpYXQiOjE2MTc2MjY4MDB9.FGc6aCdych26nSPrwFr1oei75iTA0weI8OFaIgvjY78'
-    //    }
-  });
-  console.log(result.data.results);
-  return result.data.results;
+  try {
+    const result = await axios.get(host + '/api/doctors');
+    // console.log(result.data.results)
+    return result.data.results;
+  } catch (err) {
+    Alert.alert('카테고리를 불러올 수 없습니다 :(');
+  }
 }

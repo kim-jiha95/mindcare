@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logoImage: {
+    marginTop: Platform.OS === 'ios' ? 5 : 35,
     width: 100,
     resizeMode: 'contain',
   },
