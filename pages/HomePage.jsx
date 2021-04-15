@@ -17,13 +17,14 @@ import {
 import HeaderComponent from '../components/HeaderComponent';
 
 import back from '../assets/back.png';
+import feel from '../assets/feel.png';
+import mood from '../assets/mood.png';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default function HomePage({ navigation }) {
   return (
     <Container>
       <HeaderComponent />
-      {/* <Image style={styles.Survey} source={require('../assets/survey.png')} /> */}
       {/* <Button
         style={styles.SurveyButton}
         title="당신의 마음을 알아보세요"
@@ -39,40 +40,105 @@ export default function HomePage({ navigation }) {
 
       {/* <SurveyLinkPage />  */}
       <ScrollView>
-        <Image
-          style={styles.Message}
-          source={require('../assets/Message.png')}
-        />
-        <View
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          <TouchableOpacity onPress={() => navigation.navigate('SurveyPage')}>
+            <Image
+              style={styles.Message}
+              source={require('../assets/Group.png')}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('SurveyPage')}>
+            <Image
+              style={styles.Message}
+              source={require('../assets/Saly1.png')}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('SurveyPage')}>
+            <Image
+              style={styles.Message}
+              source={require('../assets/Message.png')}
+            />
+          </TouchableOpacity>
+          {/* <Image
+            style={styles.Message}
+            source={require('../assets/Message.png')}
+          /> */}
+        </ScrollView>
+        {/* <View
           style={{
             flex: 1,
-            maraginbottom: 150,
+            maraginbottom: 100,
             justifyContent: 'space-evenly',
             alignItems: 'center',
             marginVertical: 50,
           }}
-        >
-          <TouchableOpacity>
-            <ImageBackground
-              source={back}
-              style={{
-                marginTop: 120,
-                borderRadius: 10,
-                width: 400,
-                height: 300,
-                resizeMode: 'contain',
-
-                opacity: 0.8,
-              }}
+        > */}
+        {/* <ScrollView> */}
+        {/* 고민카테고리 */}
+        {/* <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
             >
-              <Text style={{ fontSize: 20, margin: 20, color: 'white' }}>
-                내 마음이 힘든건지{'\n'}모르겠어요
-              </Text>
-            </ImageBackground>
-          </TouchableOpacity>
+              <TouchableOpacity>
+                <ImageBackground
+                  source={mood}
+                  style={{
+                    marginTop: 50,
+                    borderRadius: 10,
+                    width: 400,
+                    height: 300,
+                    resizeMode: 'contain',
 
-          <GradientButton
-            style={{ marginTop: 200 }}
+                    opacity: 0.8,
+                  }}
+                >
+                  <Text style={{ fontSize: 20, margin: 20, color: 'white' }}>
+                    숨겨진뜻이 있는 사람보다{'\n'}보이는 맘이 있는 사람이
+                    좋아진다.
+                  </Text>
+                </ImageBackground>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <ImageBackground
+                  source={feel}
+                  style={{
+                    marginTop: 50,
+                    borderRadius: 10,
+                    width: 400,
+                    height: 300,
+                    resizeMode: 'contain',
+
+                    opacity: 0.8,
+                  }}
+                >
+                  <Text style={{ fontSize: 20, margin: 20, color: 'white' }}>
+                    넌 행복이 어울리는 사람이야{'\n'}행복말고는 답이 없다구!
+                  </Text>
+                </ImageBackground>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <ImageBackground
+                  source={back}
+                  style={{
+                    marginTop: 50,
+                    borderRadius: 10,
+                    width: 400,
+                    height: 300,
+                    resizeMode: 'contain',
+
+                    opacity: 0.8,
+                  }}
+                >
+                  <Text style={{ fontSize: 20, margin: 20, color: 'white' }}>
+                    남들이 알아주는게 뭐가 중요해?{'\n'}내가 행복하면 그만이지!
+                  </Text>
+                </ImageBackground>
+              </TouchableOpacity>
+            </ScrollView>
+          </ScrollView> */}
+
+        {/* <GradientButton
+            style={{ marginTop: 50 }}
             position={'absolute'}
             text="당신의 마음을 알아보세요"
             textStyle={{ fontSize: 20 }}
@@ -85,17 +151,17 @@ export default function HomePage({ navigation }) {
             impact
             impactStyle="Light"
             onPressAction={() => navigation.navigate('SurveyPage')}
-          />
+          /> */}
 
-          <GradientButton
-            text="마인드케어 체험해보기"
-            width="70%"
-            style={{ marginTop: 50 }}
-            blueMarine
-            impact
-            onPressAction={() => Linking.openURL(`tel:01051252908`)}
-          />
-        </View>
+        <GradientButton
+          text="마인드케어 체험해보기"
+          width="70%"
+          style={{ marginTop: 150, left: 50 }}
+          blueMarine
+          impact
+          onPressAction={() => Linking.openURL(`tel:01051252908`)}
+        />
+        {/* </View> */}
       </ScrollView>
     </Container>
   );
@@ -106,8 +172,9 @@ const styles = StyleSheet.create({
     width: 250,
     height: 200,
     left: 60,
-    top: 120,
+    top: 20,
     borderRadius: 15,
+    resizeMode: 'contain',
   },
   SurveyButton: {
     width: 50,
