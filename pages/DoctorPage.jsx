@@ -19,6 +19,7 @@ export default function DoctorPage({ navigation }) {
   const [DoctorLists, setDoctorLists] = useState();
   const [ready, setReady] = useState(false);
 
+  console.log(DoctorLists);
   useEffect(() => {
     download();
   }, []);
