@@ -82,7 +82,8 @@ export default function SignUpPage({ navigation }) {
     //   setconfirmPasswordError('');
     // }
 
-    await register(username, password, navigation);
+    await register(username, password, phone, navigation);
+    navigation.navigate('SignInPage');
   };
 
   return (

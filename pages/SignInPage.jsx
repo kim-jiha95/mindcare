@@ -38,7 +38,7 @@ export default function SignInPage({ navigation }) {
   }, []);
 
   const doSignIn = () => {
-    console.log(id);
+    console.log(username);
     console.log(password);
     if (username == '') {
       setEmailError('이메일을 입력해주세요');
@@ -52,6 +52,8 @@ export default function SignInPage({ navigation }) {
       setPasswordError('');
     }
     login(username, password, navigation);
+    navigation.navigate('TabNavigator');
+    // issue
   };
   const setidFunc = (itemInputid) => {
     setusername(itemInputid);
@@ -73,7 +75,7 @@ export default function SignInPage({ navigation }) {
           <Form style={styles.form}>
             <ItemInput
               title={'이메일'}
-              type={'id'}
+              type={'username'}
               setFunc={setidFunc}
               error={emailError}
             />

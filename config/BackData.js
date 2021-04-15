@@ -37,10 +37,10 @@ export async function register(
       url: host + '/api/signup',
       // header: await AsyncStorage.getItem('session'), JWT 토큰 헤더에 담는 방법
       data: {
-        "username": username,
-        "password": password,
+        username: username,
+        password: password,
         // confirmPassword: confirmPassword,
-        "phone": phone
+        phone: phone,
       },
     });
 
@@ -69,7 +69,7 @@ export async function login(username, password, navigation) {
   try {
     const result = await axios({
       method: 'post',
-      url: host + '/login',
+      url: host + '/api/login',
       data: {
         username: username,
         password: password,
@@ -81,6 +81,7 @@ export async function login(username, password, navigation) {
       console.log(result.data.token);
       await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);
       navigation.push('TabNavigator');
+      // issue
     } else if (result.data.msg == 'fail') {
       Alert.alert('로그인에 실패했습니다.');
     }
