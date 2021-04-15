@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import { Checkbox } from 'react-native-paper';
 
 import { getDoctorList } from '../config/BackData';
 import DoctorCard from '../components/DoctorCard';
@@ -19,7 +20,6 @@ export default function DoctorPage({ navigation }) {
   const [DoctorLists, setDoctorLists] = useState();
   const [ready, setReady] = useState(false);
 
-  console.log(DoctorLists);
   useEffect(() => {
     download();
   }, []);
@@ -28,6 +28,10 @@ export default function DoctorPage({ navigation }) {
     const result = await getDoctorList();
     setDoctorLists(result);
     setReady(true);
+  };
+
+  const MyComponent = () => {
+    const [checked, setChecked] = React.useState(false);
   };
 
   return ready ? (
@@ -39,9 +43,9 @@ export default function DoctorPage({ navigation }) {
           <View style={styles.ListCard}>
             {data.hurtList.map((content, i) => {
               return (
-                <TouchableOpacity style={styles.HurtCard} key={i}>
+                <Checkbox style={styles.HurtCard} key={i}>
                   <Text style={styles.ListText}>{content.title}</Text>
-                </TouchableOpacity>
+                </Checkbox>
               );
             })}
           </View>
