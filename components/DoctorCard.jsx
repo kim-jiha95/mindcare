@@ -10,7 +10,12 @@ export default function DoctorCard({ navigation, DoctorList }) {
       {/* 상담사 사진 */}
       <Image source={{ uri: DoctorList.img }} style={styles.DoctorImage} />
       {/* 상담사 이름 */}
-      <Text style={styles.DoctorName}>{DoctorList.name}</Text>
+      <View style={styles.TextBox}>
+        <Text style={styles.DoctorName}>{DoctorList.name}</Text>
+        <Text style={styles.DoctorSpecialties}>
+          {DoctorList.specialties.join(' ')}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 }
@@ -30,9 +35,13 @@ const styles = StyleSheet.create({
     borderRadius: 240,
     resizeMode: 'cover',
   },
+  TextBox: {
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
   DoctorName: {
     fontSize: 30,
     paddingLeft: 30,
-    alignSelf: 'center',
   },
+  DoctorSpecialties: { paddingLeft: 30 },
 });

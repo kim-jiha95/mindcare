@@ -40,9 +40,11 @@ export default function DoctorDetailPage({ navigation, route }) {
         <View style={styles.InfobBox}>
           <Text style={styles.DoctorName}>이름 : {DoctorDetail.name}</Text>
           <Text style={styles.DoctorMajor}>
-            전문분야 : {DoctorDetail.specialties}
+            전문분야 : {DoctorDetail.specialties.join('  ')}
           </Text>
-          <Text style={styles.DoctorPart}>{DoctorDetail.careers}</Text>
+          <Text style={styles.DoctorPart}>
+            {DoctorDetail.careers.join('\n')}
+          </Text>
         </View>
 
         <Footer style={styles.footer}>
@@ -72,13 +74,13 @@ const styles = StyleSheet.create({
   },
   InfobBox: {
     marginTop: diviceWidth * 0.2,
-    marginLeft: diviceWidth * 0.2,
-    marginRight: diviceWidth * 0.2,
+    marginLeft: diviceWidth * 0.1,
+    marginRight: diviceWidth * 0.1,
     alignSelf: 'center',
     alignContent: 'center',
   },
-  DoctorName: { fontSize: 15 },
-  DoctorMajor: { fontSize: 15 },
+  DoctorName: { fontSize: 20 },
+  DoctorMajor: { fontSize: 17 },
   DoctorPart: { fontSize: 15 },
   Dialbtn: {
     width: diviceWidth * 0.3,
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     height: 60,
   },
   footer: {
-    marginTop: diviceWidth * 0.45,
+    marginTop: diviceWidth * 0.3,
 
     borderTopWidth: 0,
     margin: 10,
