@@ -16,12 +16,19 @@ import {
 } from 'react-native';
 import HeaderComponent from '../components/HeaderComponent';
 
+// import { AsyncStorage } from 'react-native';
+import { logout } from '../config/BackData';
+
 import back from '../assets/back.png';
 import feel from '../assets/feel.png';
 import mood from '../assets/mood.png';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default function HomePage({ navigation }) {
+  const goSignOut = () => {
+    logout();
+    navigation.navigate('SignIn');
+  };
   return (
     <Container>
       <HeaderComponent />
@@ -161,6 +168,9 @@ export default function HomePage({ navigation }) {
           impact
           onPressAction={() => Linking.openURL(`tel:01051252908`)}
         />
+        <TouchableOpacity style={{ marginTop: 20 }} onPress={goSignOut}>
+          <Text style={styles.logout}>로그아웃</Text>
+        </TouchableOpacity>
         {/* </View> */}
       </ScrollView>
     </Container>
@@ -168,6 +178,13 @@ export default function HomePage({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  logout: {
+    alignSelf: 'center',
+    padding: 10,
+    borderColor: 'grey',
+    borderWidth: 1,
+    borderRadius: 10,
+  },
   Message: {
     width: 250,
     height: 200,

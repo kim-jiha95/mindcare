@@ -75,21 +75,24 @@ export default function DoctorDetailPage({ navigation, route }) {
               style={{
                 borderwidth: 1,
                 borderColor: 'black',
-                width: 100,
-                height: 100,
+                width: 80,
+                height: 80,
                 // left: 150,
-                marginLeft: 50,
+                marginLeft: 30,
+                marginBottom: 40,
               }}
               title="Show Date Picker"
               color="#f194ff"
               onPress={showDatePicker}
             />
+            <Text>대면진료 예약하기</Text>
             <DateTimePickerModal
               isVisible={isDatePickerVisible}
               mode="date"
               onConfirm={handleConfirm}
               onCancel={hideDatePicker}
             />
+            {/* <Text>대면진료 예약하기</Text> */}
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -97,7 +100,7 @@ export default function DoctorDetailPage({ navigation, route }) {
             onPress={() => Linking.openURL(`tel:01051252908`)}
           >
             <Image style={styles.Dial} source={require('../assets/Dial.png')} />
-            <Text>전화로 상담하기</Text>
+            {/* <Text>전화로 상담하기</Text> */}
           </TouchableOpacity>
         </Footer>
       </ScrollView>
@@ -154,10 +157,11 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
   DayButton: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderColor: 'black',
     width: 100,
     height: 60,
     marginRight: 50,
+    marginBottom: 50,
   },
 });
