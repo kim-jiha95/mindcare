@@ -56,8 +56,22 @@ export default function SignUpPage({ navigation }) {
       setphoneError('');
     }
 
-    register(username, password, phone, navigation);
-    navigation.goBack();
+    // if (confirmPassword == '') {
+    //   setconfirmPasswordError('비밀번호 확인을 입력해주세요');
+    //   return false;
+    // } else {
+    //   setconfirmPasswordError('');
+    // }
+
+    // if (password !== confirmPassword) {
+    //   setconfirmPasswordError('비밀번호가 서로 일치 하지 않습니다.');
+    //   return false;
+    // } else {
+    //   setconfirmPasswordError('');
+    // }
+
+    await register(username, password, phone, navigation);
+    navigation.navigate('SignInPage');
   };
 
   return (
