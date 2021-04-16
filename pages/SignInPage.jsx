@@ -38,8 +38,6 @@ export default function SignInPage({ navigation }) {
   }, []);
 
   const doSignIn = () => {
-    console.log(username);
-    console.log(password);
     if (username == '') {
       setEmailError('이메일을 입력해주세요');
     } else {

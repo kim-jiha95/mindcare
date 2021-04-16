@@ -56,12 +56,42 @@ export default function DoctorDetailPage({ navigation, route }) {
         <View style={styles.InfobBox}>
           <Text style={styles.DoctorName}>이름 : {DoctorDetail.name}</Text>
           <Text style={styles.DoctorMajor}>
-            전문분야 : {DoctorDetail.specialties}
+            전문분야 : {DoctorDetail.specialties.join('  ')}
           </Text>
-          <Text style={styles.DoctorPart}>{DoctorDetail.careers}</Text>
+          <Text style={styles.DoctorPart}>
+            {DoctorDetail.careers.join('\n')}
+          </Text>
         </View>
 
         <Footer style={styles.footer}>
+          <TouchableOpacity
+            style={styles.DayButton}
+            title="Show Date Picker"
+            backgroundColor="black"
+            onPress={showDatePicker}
+          >
+            <Image
+              source={require('../assets/calendar.png')}
+              style={{
+                borderwidth: 1,
+                borderColor: 'black',
+                width: 100,
+                height: 100,
+                // left: 150,
+                marginLeft: 50,
+              }}
+              title="Show Date Picker"
+              color="#f194ff"
+              onPress={showDatePicker}
+            />
+            <DateTimePickerModal
+              isVisible={isDatePickerVisible}
+              mode="date"
+              onConfirm={handleConfirm}
+              onCancel={hideDatePicker}
+            />
+          </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.Dialbtn}
             onPress={() => Linking.openURL(`tel:01051252908`)}
@@ -69,27 +99,6 @@ export default function DoctorDetailPage({ navigation, route }) {
             <Image style={styles.Dial} source={require('../assets/Dial.png')} />
             <Text>전화로 상담하기</Text>
           </TouchableOpacity>
-
-          <Image
-            source={require('../assets/calendar.png')}
-            style={{
-              borderwidth: 1,
-              borderColor: 'black',
-              width: 100,
-              height: 100,
-              // left: 150,
-              marginLeft: 50,
-            }}
-            title="Show Date Picker"
-            color="#f194ff"
-            onPress={showDatePicker}
-          />
-          <DateTimePickerModal
-            isVisible={isDatePickerVisible}
-            mode="date"
-            onConfirm={handleConfirm}
-            onCancel={hideDatePicker}
-          />
         </Footer>
       </ScrollView>
     </Container>
@@ -115,13 +124,13 @@ const styles = StyleSheet.create({
   },
   InfobBox: {
     marginTop: diviceWidth * 0.2,
-    marginLeft: diviceWidth * 0.2,
-    marginRight: diviceWidth * 0.2,
+    marginLeft: diviceWidth * 0.1,
+    marginRight: diviceWidth * 0.1,
     alignSelf: 'center',
     alignContent: 'center',
   },
-  DoctorName: { fontSize: 15 },
-  DoctorMajor: { fontSize: 15 },
+  DoctorName: { fontSize: 20 },
+  DoctorMajor: { fontSize: 17 },
   DoctorPart: { fontSize: 15 },
   Dialbtn: {
     width: diviceWidth * 0.3,
@@ -143,5 +152,12 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
     shadowOpacity: 0,
     elevation: 0,
+  },
+  DayButton: {
+    borderWidth: 1,
+    borderColor: 'black',
+    width: 100,
+    height: 60,
+    marginRight: 50,
   },
 });

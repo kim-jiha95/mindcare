@@ -7,19 +7,19 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Dimensions,
 } from 'react-native';
-
-import { getDoctorList } from '../config/BackData';
+import HeaderComponent from '../components/HeaderComponent';
+import CheckBox from '../components/CheckBox';
 import DoctorCard from '../components/DoctorCard';
 import Loading from './Loading';
 
 const data = require('../data.json');
-
+import { getDoctorList } from '../config/BackData';
 export default function DoctorPage({ navigation }) {
   const [DoctorLists, setDoctorLists] = useState();
   const [ready, setReady] = useState(false);
 
-  console.log(DoctorLists);
   useEffect(() => {
     download();
   }, []);
@@ -32,21 +32,23 @@ export default function DoctorPage({ navigation }) {
 
   return ready ? (
     <Container style={styles.container}>
-      <Text style={styles.tmphead}>Counsultants</Text>
-      <ScrollView>
-        {/* 고민카테고리 */}
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <View style={styles.ListCard}>
-            {data.hurtList.map((content, i) => {
-              return (
-                <TouchableOpacity style={styles.HurtCard} key={i}>
-                  <Text style={styles.ListText}>{content.title}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-        </ScrollView>
+      <HeaderComponent />
 
+      <Text style={styles.tmphead}>Doctors</Text>
+
+      {/* 고민카테고리 */}
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <View style={styles.ListCard}>
+          {data.hurtList.map((content, i) => {
+            return (
+              <View key={i}>
+                <CheckBox style={styles.HurtCard} hurt={content.title} />
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
+      <ScrollView>
         {/* 상담사 리스트 */}
         {DoctorLists.map((DoctorList, i) => {
           return (
@@ -67,15 +69,15 @@ export default function DoctorPage({ navigation }) {
 const styles = StyleSheet.create({
   container: {},
   tmphead: {
-    margin: 30,
+    marginTop: 30,
     textAlign: 'center',
     fontSize: 30,
   },
   ListCard: {
     padding: 20,
+    marginBottom: 10,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
   },
   ListText: {
     fontSize: 17,
@@ -85,6 +87,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     borderWidth: 0.1,
+    borderColor: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -93,25 +96,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 1,
-  },
-  DoctorCard: {
-    flex: 1,
-    flexDirection: 'row',
-    padding: 10,
-    margin: 10,
-    borderWidth: 0.1,
-    borderRadius: 8,
-    backgroundColor: 'white',
-  },
-  DoctorImage: {
-    height: 160,
-    width: 160,
-    borderRadius: 240,
-    resizeMode: 'cover',
-  },
-  DoctorName: {
-    fontSize: 40,
-    paddingLeft: 30,
-    alignSelf: 'center',
   },
 });
