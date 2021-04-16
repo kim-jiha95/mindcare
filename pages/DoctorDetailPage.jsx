@@ -1,5 +1,6 @@
 import { Container, Footer, Button } from 'native-base';
 import React, { useState, useEffect } from 'react';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import {
   StyleSheet,
   Image,
@@ -16,6 +17,21 @@ import { ScrollView } from 'react-native-gesture-handler';
 const diviceWidth = Dimensions.get('window').width;
 
 export default function DoctorDetailPage({ navigation, route }) {
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    console.warn('A date has been picked: ', date);
+    hideDatePicker();
+  };
+
   const DoctorInfo = route.params;
 
   const [DoctorDetail, setDoctorDetail] = useState();
@@ -55,6 +71,25 @@ export default function DoctorDetailPage({ navigation, route }) {
             <Image style={styles.Dial} source={require('../assets/Dial.png')} />
             <Text>전화로 상담하기</Text>
           </TouchableOpacity>
+          <Button
+            style={{
+              borderwidth: 1,
+              borderColor: 'black',
+              width: 100,
+              height: 100,
+              // left: 150,
+              marginLeft: 50,
+            }}
+            title="Show Date Picker"
+            color="#f194ff"
+            onPress={showDatePicker}
+          />
+          <DateTimePickerModal
+            isVisible={isDatePickerVisible}
+            mode="date"
+            onConfirm={handleConfirm}
+            onCancel={hideDatePicker}
+          />
         </Footer>
       </ScrollView>
     </Container>
@@ -64,6 +99,12 @@ export default function DoctorDetailPage({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+  calendar: {
+    width: 350,
+    height: 250,
+    left: 150,
+    top: 150,
+  },
   DoctorImage: {
     width: 300,
     height: 300,
@@ -93,7 +134,7 @@ const styles = StyleSheet.create({
     height: 60,
   },
   footer: {
-    marginTop: diviceWidth * 0.3,
+    marginTop: diviceWidth * 0.25,
 
     borderTopWidth: 0,
     margin: 10,
