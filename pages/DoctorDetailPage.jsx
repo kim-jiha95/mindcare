@@ -69,7 +69,9 @@ export default function DoctorDetailPage({ navigation, route }) {
             <Image style={styles.Dial} source={require('../assets/Dial.png')} />
             <Text>전화로 상담하기</Text>
           </TouchableOpacity>
-          <Button
+
+          <Image
+            source={require('../assets/calendar.png')}
             style={{
               borderwidth: 1,
               borderColor: 'black',
