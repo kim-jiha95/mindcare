@@ -72,7 +72,7 @@ export async function login(username, password, navigation) {
       },
     });
 
-    if (result.data.msg == 'success') {
+    if (result.data.ok == 'success') {
       Alert.alert('로그인 성공!');
       console.log(result.data.token);
       await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);

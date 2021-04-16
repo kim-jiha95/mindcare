@@ -15,8 +15,8 @@ const StackNavigator = () => {
         headerShown: false,
       }}
     >
-      {/* <Stack.Screen name="SignInPage" component={SignInPage} />
-      <Stack.Screen name="SignUpPage" component={SignUpPage} /> */}
+      <Stack.Screen name="SignInPage" component={SignInPage} />
+      <Stack.Screen name="SignUpPage" component={SignUpPage} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
       <Stack.Screen name="DoctorDetailPage" component={DoctorDetailPage} />
       <Stack.Screen name="SurveyPage" component={SurveyPage} />
