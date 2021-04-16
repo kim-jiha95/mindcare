@@ -70,7 +70,7 @@ export default function SignUpPage({ navigation }) {
     //   setconfirmPasswordError('');
     // }
 
-    await register(username, password, phone, navigation);
+    register(username, password, phone, navigation);
     navigation.navigate('SignInPage');
   };
 

@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     // borderBottomWidth: 1.5,
     // borderBottomColor: '#EEE',
     justifyContent: 'center',
+    marginBottom: 20,
   },
   logoImage: {
     marginTop: Platform.OS === 'ios' ? 5 : 35,
