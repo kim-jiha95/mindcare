@@ -65,31 +65,26 @@ export default function DoctorDetailPage({ navigation, route }) {
 
         <Footer style={styles.footer}>
           <TouchableOpacity
+            style={styles.DayButton}
+            title="Show Date Picker"
+            backgroundColor="black"
+            onPress={showDatePicker}
+          >
+            <DateTimePickerModal
+              isVisible={isDatePickerVisible}
+              mode="date"
+              onConfirm={handleConfirm}
+              onCancel={hideDatePicker}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
             style={styles.Dialbtn}
             onPress={() => Linking.openURL(`tel:01051252908`)}
           >
             <Image style={styles.Dial} source={require('../assets/Dial.png')} />
             <Text>전화로 상담하기</Text>
           </TouchableOpacity>
-          <Button
-            style={{
-              borderwidth: 1,
-              borderColor: 'black',
-              width: 100,
-              height: 100,
-              // left: 150,
-              marginLeft: 50,
-            }}
-            title="Show Date Picker"
-            color="#f194ff"
-            onPress={showDatePicker}
-          />
-          <DateTimePickerModal
-            isVisible={isDatePickerVisible}
-            mode="date"
-            onConfirm={handleConfirm}
-            onCancel={hideDatePicker}
-          />
         </Footer>
       </ScrollView>
     </Container>
@@ -143,5 +138,12 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
     shadowOpacity: 0,
     elevation: 0,
+  },
+  DayButton: {
+    borderWidth: 1,
+    borderColor: 'black',
+    width: 100,
+    height: 60,
+    marginRight: 50,
   },
 });
