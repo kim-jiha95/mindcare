@@ -1,4 +1,6 @@
-import { Alert } from 'react-native';
+import {
+  Alert
+} from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -39,15 +41,9 @@ export async function register(
       data: {
         "username": username,
         "password": password,
-        // confirmPassword: confirmPassword,
         "phone": phone
       },
     });
-
-    console.log(result);
-    console.log(result.data);
-    // console.log(result.data.msg);
-
     // if (result.data.msg == 'empty') {
     //   Alert.alert('비어있는 값이 있습니다!');
     // } else if (result.data.msg == 'not_match') {

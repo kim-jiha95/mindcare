@@ -7,15 +7,16 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Dimensions,
 } from 'react-native';
-import { Checkbox } from 'react-native-paper';
 
-import { getDoctorList } from '../config/BackData';
+import { CheckBox } from 'react-native-elements';
+import CheckHurt from '../components/CheckBox';
 import DoctorCard from '../components/DoctorCard';
 import Loading from './Loading';
 
 const data = require('../data.json');
-
+import { getDoctorList } from '../config/BackData';
 export default function DoctorPage({ navigation }) {
   const [DoctorLists, setDoctorLists] = useState();
   const [ready, setReady] = useState(false);
@@ -30,22 +31,20 @@ export default function DoctorPage({ navigation }) {
     setReady(true);
   };
 
-  const MyComponent = () => {
-    const [checked, setChecked] = React.useState(false);
-  };
-
   return ready ? (
     <Container style={styles.container}>
       <Text style={styles.tmphead}>Counsultants</Text>
+
       <ScrollView>
         {/* 고민카테고리 */}
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.ListCard}>
             {data.hurtList.map((content, i) => {
               return (
-                <Checkbox style={styles.HurtCard} key={i}>
-                  <Text style={styles.ListText}>{content.title}</Text>
-                </Checkbox>
+                <View key={i}>
+                  <CheckHurt style={styles.HurtCard} list={content.title} />
+                  <Text>{content.hurtList} </Text>
+                </View>
               );
             })}
           </View>

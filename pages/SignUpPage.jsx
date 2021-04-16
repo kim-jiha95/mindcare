@@ -34,19 +34,7 @@ export default function SignUpPage({ navigation }) {
   const [phone, setphone] = useState('');
   const [phoneError, setphoneError] = useState('');
 
-  const doSignUp = async () => {
-    // console.log(nickName);
-    console.log(username);
-    console.log(password);
-    // console.log(confirmPassword);
-    console.log(phone);
-    // if (nickName == '') {
-    //   setNickNameError('닉네임을 입력해주세요');
-    //   return false;
-    // } else {
-    //   setNickNameError('');
-    // }
-
+  const doSignUp = () => {
     if (username == '') {
       setusernameError('이메일을 입력해주세요');
       return false;
@@ -68,21 +56,8 @@ export default function SignUpPage({ navigation }) {
       setphoneError('');
     }
 
-    // if (confirmPassword == '') {
-    //   setconfirmPasswordError('비밀번호 확인을 입력해주세요');
-    //   return false;
-    // } else {
-    //   setconfirmPasswordError('');
-    // }
-
-    // if (password !== confirmPassword) {
-    //   setconfirmPasswordError('비밀번호가 서로 일치 하지 않습니다.');
-    //   return false;
-    // } else {
-    //   setconfirmPasswordError('');
-    // }
-
-    await register(username, password, navigation);
+    register(username, password, phone, navigation);
+    navigation.goBack();
   };
 
   return (
