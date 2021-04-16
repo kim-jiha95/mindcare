@@ -76,14 +76,14 @@ export async function login(username, password, navigation) {
       },
     });
 
-    if (result.data.msg == 'success') {
-      Alert.alert('로그인 성공!');
+    if (result.data.ok == true) {
+      Alert.alert(result.data.msg);
       console.log(result.data.token);
       await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);
       navigation.push('TabNavigator');
       // issue
-    } else if (result.data.msg == 'fail') {
-      Alert.alert('로그인에 실패했습니다.');
+    } else if (result.data.ok == false) {
+      Alert.alert(result.data.msg);
     }
   } catch (err) {
     Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);

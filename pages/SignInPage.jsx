@@ -52,7 +52,7 @@ export default function SignInPage({ navigation }) {
       setPasswordError('');
     }
     login(username, password, navigation);
-    navigation.navigate('TabNavigator');
+    // navigation.navigate('TabNavigator');
     // issue
   };
   const setidFunc = (itemInputid) => {
