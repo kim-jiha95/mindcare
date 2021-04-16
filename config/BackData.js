@@ -65,14 +65,14 @@ export async function login(username, password, navigation) {
   try {
     const result = await axios({
       method: 'post',
-      url: host + '/login',
+      url: host + '/api/login',
       data: {
         username: username,
         password: password,
       },
     });
 
-    if (result.data.ok == 'success') {
+    if (result.data.ok == 'true') {
       Alert.alert('로그인 성공!');
       console.log(result.data.token);
       await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);
