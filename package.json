@@ -35,7 +35,8 @@
     "react-native-screens": "~2.15.2",
     "react-native-switch-selector": "^2.1.4",
     "react-native-web": "~0.13.12",
-    "react-native-webview": "^11.4.0"
+    "react-native-webview": "^11.4.0",
+    "two-part-progress-circle": "^1.2.7"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
