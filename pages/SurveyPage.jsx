@@ -5,16 +5,7 @@ import HeaderComponent from '../components/HeaderComponent';
 import SurveyLinkPage from './SurveyLinkPage';
 
 export default function SurveyPage() {
-  <HeaderComponent />;
-  return (
-    <Container>
-      <HeaderComponent />
-      <SurveyLinkPage />
-      {/* <View>
-        <Text>DoctorPage</Text>
-      </View> */}
-    </Container>
-  );
+  return <View></View>;
 }
 
 const styles = StyleSheet.create({});

@@ -30,7 +30,7 @@ const TabNavigator = () => {
               name={iconName}
               color={focused ? '#64FCD9' : '#AEAEAE'}
               size={focused ? 28 : 26}
-            />
+            />  
           );
         },
       })}

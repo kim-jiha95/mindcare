@@ -32,11 +32,9 @@ export default function DoctorPage({ navigation }) {
 
   return ready ? (
     <Container style={styles.container}>
-      <HeaderComponent />
-
       <Text style={styles.tmphead}>Doctors</Text>
 
-      {/* 고민카테고리 */}
+      {/* 고민 리스트 */}
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={styles.ListCard}>
           {data.hurtList.map((content, i) => {
@@ -69,7 +67,7 @@ export default function DoctorPage({ navigation }) {
 const styles = StyleSheet.create({
   container: {},
   tmphead: {
-    marginTop: 30,
+    marginTop: 70,
     textAlign: 'center',
     fontSize: 30,
   },

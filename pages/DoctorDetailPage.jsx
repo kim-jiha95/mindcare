@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import Loading from './Loading';
 import HeaderComponent from '../components/HeaderComponent';
-import { getDoctorDetail } from '../config/BackData';
+import { getDoctorDetail, getDoctorList } from '../config/BackData';
 import { ScrollView } from 'react-native-gesture-handler';
 const diviceWidth = Dimensions.get('window').width;
 

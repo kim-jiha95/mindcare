@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Text, View } from 'react-native';
 import { Header, Left, Icon, Right, Button } from 'native-base';
 
 const logo = require('../assets/logo.png');
@@ -7,24 +7,24 @@ const logo = require('../assets/logo.png');
 export default function HeaderComponent() {
   return (
     <Header style={styles.header} transparent>
-      <Button transparent>
-        <Image source={logo} style={styles.logoImage} />
-      </Button>
+      <View>
+        <Text style={styles.HeaderText}>Mind Care</Text>
+      </View>
     </Header>
   );
 }
 
 const styles = StyleSheet.create({
   header: {
-    marginVertical: 5,
-    // borderBottomWidth: 1.5,
-    // borderBottomColor: '#EEE',
-    justifyContent: 'center',
-    marginBottom: 20,
+    flex: 1,
+    marginVertical: 30,
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
-  logoImage: {
-    marginTop: Platform.OS === 'ios' ? 5 : 35,
-    width: 100,
-    resizeMode: 'contain',
+  HeaderText: {
+    fontSize: 30,
+    margin: 30,
+    textAlign: 'center',
+    color: 'black',
   },
 });
