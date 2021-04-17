@@ -3,26 +3,24 @@ import React, { useRef } from 'react';
 import GradientButton from 'react-native-gradient-buttons';
 import {
   StyleSheet,
-  View,
-  Text,
   TouchableOpacity,
-  Alert,
   Image,
   Linking,
-  WebView,
-  TextPropTypes,
+  View,
+  Text,
+  Dimensions,
   Button,
-  ImageBackground,
 } from 'react-native';
+
+import TestCard from '../components/TestCard';
 import HeaderComponent from '../components/HeaderComponent';
+import SurveyLinkPage from './SurveyLinkPage';
 
-// import { AsyncStorage } from 'react-native';
-import { logout } from '../config/BackData';
-
-import back from '../assets/back.png';
-import feel from '../assets/feel.png';
-import mood from '../assets/mood.png';
 import { ScrollView } from 'react-native-gesture-handler';
+import { BackgroundImage } from 'react-native-elements/dist/config';
+import { Dialog } from 'react-native-paper';
+
+const diviceWidth = Dimensions.get('window').width;
 
 export default function HomePage({ navigation }) {
   const goSignOut = () => {
@@ -31,143 +29,74 @@ export default function HomePage({ navigation }) {
   };
   return (
     <Container>
-      <HeaderComponent />
-      {/* <Button
-        style={styles.SurveyButton}
-        title="당신의 마음을 알아보세요"
-        color="#f194ff"
-        onPress={() => navigation.navigate('SurveyPage')}
-      />
-      <Button
-        style={styles.experienceButton}
-        title="마인드케어 체험해보기"
-        color="#f194ff"
-        onPress={() => Linking.openURL(`tel:01051252908`)}
-      /> */}
-
-      {/* <SurveyLinkPage />  */}
+      <View>
+        <HeaderComponent />
+      </View>
       <ScrollView>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <TouchableOpacity onPress={() => navigation.navigate('SurveyPage')}>
-            <Image
-              style={styles.Message}
-              source={require('../assets/Group.png')}
-            />
+        {/* 무료 설문조사 */}
+        <View style={styles.TestCardBox}>
+          <TestCard
+            text={'심리 검사'}
+            img={
+              'https://i.pinimg.com/originals/a7/90/81/a7908140ca1f892ee0a5d931867c8050.png'
+            }
+            navigation={navigation}
+          />
+          <TestCard
+            text={'성격 검사'}
+            img={
+              'http://tbc.imgdl.xcache.kinxcdn.com/cdn001/20200320/329370782_0321_6.jpg'
+            }
+            navigation={navigation}
+          />
+        </View>
+
+        <View style={styles.TestCardBox}>
+          <TestCard
+            text={'자존감 검사'}
+            img={
+              'https://i.pinimg.com/originals/d3/0f/66/d30f66d5d869b55d07230930d6ea19b5.jpg'
+            }
+            navigation={navigation}
+          />
+          <TestCard
+            text={'우울증 검사'}
+            img={'https://pbs.twimg.com/media/DSrgVpPU8AAkzyO.jpg'}
+            navigation={navigation}
+          />
+        </View>
+
+        <View style={styles.TestCardBox}>
+          <TestCard
+            text={'직무스트레스 검사'}
+            img={
+              'https://i.pinimg.com/736x/23/3c/40/233c400a70f03d2f4ad59fb3bf6c0bab.jpg'
+            }
+            navigation={navigation}
+          />
+          <TestCard
+            text={'취업스트레스 검사'}
+            img={
+              'https://tumblbug-pci.imgix.net/dfd6741e6221c177ba50d064c6f64cbc6f8edc53/4282c81ca07bc0b2a4c4b284517a17cd3cc5bb8b/18b515c36d680892097e0117e6987d490b675eed/9c19852c-b3b7-443e-b95f-5ee4ab0892f8.jpg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=6fe71d5c0644b2493499f0fb686502c0'
+            }
+            navigation={navigation}
+          />
+        </View>
+
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <TouchableOpacity
+            style={styles.ExperienceBox}
+            onPressAction={() => Linking.openURL(`tel:01051252908`)}
+          >
+            <Text style={{ fontSize: 15, textAlign: 'center' }}>
+              마인드케어 체험해보기
+            </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('SurveyPage')}>
-            <Image
-              style={styles.Message}
-              source={require('../assets/Saly1.png')}
-            />
+
+          <TouchableOpacity style={styles.ExperienceBox}>
+            <Text style={{ fontSize: 15, textAlign: 'center' }}>상담하기</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('SurveyPage')}>
-            <Image
-              style={styles.Message}
-              source={require('../assets/Message.png')}
-            />
-          </TouchableOpacity>
-        </ScrollView>
-        {/* <View
-          style={{
-            flex: 1,
-            maraginbottom: 100,
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-            marginVertical: 50,
-          }}
-        > */}
-        {/* <ScrollView> */}
-        {/* 고민카테고리 */}
-        {/* <ScrollView
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            >
-              <TouchableOpacity>
-                <ImageBackground
-                  source={mood}
-                  style={{
-                    marginTop: 50,
-                    borderRadius: 10,
-                    width: 400,
-                    height: 300,
-                    resizeMode: 'contain',
-
-                    opacity: 0.8,
-                  }}
-                >
-                  <Text style={{ fontSize: 20, margin: 20, color: 'white' }}>
-                    숨겨진뜻이 있는 사람보다{'\n'}보이는 맘이 있는 사람이
-                    좋아진다.
-                  </Text>
-                </ImageBackground>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <ImageBackground
-                  source={feel}
-                  style={{
-                    marginTop: 50,
-                    borderRadius: 10,
-                    width: 400,
-                    height: 300,
-                    resizeMode: 'contain',
-
-                    opacity: 0.8,
-                  }}
-                >
-                  <Text style={{ fontSize: 20, margin: 20, color: 'white' }}>
-                    넌 행복이 어울리는 사람이야{'\n'}행복말고는 답이 없다구!
-                  </Text>
-                </ImageBackground>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <ImageBackground
-                  source={back}
-                  style={{
-                    marginTop: 50,
-                    borderRadius: 10,
-                    width: 400,
-                    height: 300,
-                    resizeMode: 'contain',
-
-                    opacity: 0.8,
-                  }}
-                >
-                  <Text style={{ fontSize: 20, margin: 20, color: 'white' }}>
-                    남들이 알아주는게 뭐가 중요해?{'\n'}내가 행복하면 그만이지!
-                  </Text>
-                </ImageBackground>
-              </TouchableOpacity>
-            </ScrollView>
-          </ScrollView> */}
-
-        {/* <GradientButton
-            style={{ marginTop: 50 }}
-            position={'absolute'}
-            text="당신의 마음을 알아보세요"
-            textStyle={{ fontSize: 20 }}
-            gradientBegin="#874f00"
-            gradientEnd="#f5ba57"
-            gradientDirection="diagonal"
-            height={60}
-            width={300}
-            radius={15}
-            impact
-            impactStyle="Light"
-            onPressAction={() => navigation.navigate('SurveyPage')}
-          /> */}
-
-        <GradientButton
-          text="마인드케어 체험해보기"
-          width="70%"
-          style={{ marginTop: 150, left: 50 }}
-          blueMarine
-          impact
-          onPressAction={() => Linking.openURL(`tel:01051252908`)}
-        />
-        <TouchableOpacity style={{ marginTop: 20 }} onPress={goSignOut}>
-          <Text style={styles.logout}>로그아웃</Text>
-        </TouchableOpacity>
-        {/* </View> */}
+        </View>
       </ScrollView>
     </Container>
   );
@@ -182,10 +111,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   Message: {
-    width: 250,
-    height: 200,
-    left: 60,
-    top: 20,
+    width: 350,
+    height: 300,
+    marginTop: 50,
+    flex: 1,
+    alignSelf: 'center',
     borderRadius: 15,
     resizeMode: 'contain',
   },
@@ -200,5 +130,21 @@ const styles = StyleSheet.create({
     height: 150,
     left: 60,
     top: 100,
+  },
+  ExperienceBox: {
+    flex: 1,
+    marginTop: diviceWidth * 0.3,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    width: 150,
+    height: 80,
+    backgroundColor: 'orange',
+    borderRadius: 10,
+    margin: 10,
+  },
+  TestCardBox: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'center',
   },
 });

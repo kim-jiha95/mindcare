@@ -1,4 +1,6 @@
-import { Alert } from 'react-native';
+import {
+  Alert
+} from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -87,7 +89,6 @@ export async function login(username, password, navigation) {
 export async function logout() {
   try {
     console.log('로그아웃을 시도합니다..');
-    console.log(AsyncStorage);
     AsyncStorage.clear();
     Alert.alert('로그인페이지로 돌아갑니다.');
   } catch (err) {
@@ -97,12 +98,8 @@ export async function logout() {
 
 export async function reservationday(date) {
   try {
-    // const token = AsyncStorage.setItem(
-    //   'session',
-    //   'Bearer ' + result.data.token
-    // );
     let token = await AsyncStorage.getItem('session');
-    let now = date;
+    let now = JSON.stringify(date).split('T')[0].split('"')[1];
     const result = await axios({
       method: 'post',
       url: host + '/api/appointments/11/date',
@@ -113,16 +110,17 @@ export async function reservationday(date) {
         'X-AUTH-TOKEN': token,
       },
     });
-
+    console.log(now)
+    console.log("success")
+    console.log(result.data)
     if (result.data.ok == true) {
       Alert.alert(result.data.msg);
-      // console.log(result.data.token);
-      // await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);
-      // issue
     } else if (result.data.ok == false) {
       Alert.alert(result.data.msg);
     }
   } catch (err) {
+    // console.log(JSON.stringify(date).split('T')[0].split('"')[1])
+    // console.log(typeof (JSON.stringify(date)))
     Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
   }
 }

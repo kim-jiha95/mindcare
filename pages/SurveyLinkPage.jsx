@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { Container } from 'native-base';
 import { WebView } from 'react-native-webview';
 
 const styles = {
@@ -8,7 +9,7 @@ const styles = {
   },
 };
 
-const SurveyLinkPage = () => (
+const SurveyLink = (Link) => (
   <View style={styles.container}>
     <WebView
       source={{
@@ -19,4 +20,10 @@ const SurveyLinkPage = () => (
   </View>
 );
 
-export default SurveyLinkPage;
+export default function SurveyLinkPage() {
+  return (
+    <Container>
+      <SurveyLink />
+    </Container>
+  );
+}

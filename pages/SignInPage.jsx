@@ -25,8 +25,6 @@ export default function SignInPage({ navigation }) {
 
     setTimeout(() => {
       AsyncStorage.getItem('session', (err, result) => {
-        console.log('ASYNCSTORAGE');
-        console.log(result);
         if (result) {
           navigation.push('TabNavigator');
         } else {
