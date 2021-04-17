@@ -73,7 +73,7 @@ export async function login(username, password, navigation) {
 
     if (result.data.ok == true) {
       Alert.alert(result.data.msg);
-      await AsyncStorage.setItem('session', result.dat.token);
+      await AsyncStorage.setItem('session', result.data.token);
       navigation.push('TabNavigator');
       // issue
     } else if (result.data.ok == false) {
