@@ -38,7 +38,7 @@ const CheckBox = (hurt) => {
     }
   };
 
-  console.log(hurt.hurt);
+  // console.log(hurt.hurt);
   return (
     <Chip
       mode="outlined"
