@@ -75,8 +75,7 @@ export async function login(username, password, navigation) {
 
     if (result.data.ok == true) {
       Alert.alert(result.data.msg);
-      console.log(result.data.token);
-      await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);
+      await AsyncStorage.setItem('session', result.data.token);
       navigation.push('TabNavigator');
       // issue
     } else if (result.data.ok == false) {
@@ -90,7 +89,6 @@ export async function login(username, password, navigation) {
 export async function logout() {
   try {
     console.log('로그아웃을 시도합니다..');
-    console.log(AsyncStorage);
     AsyncStorage.clear();
     Alert.alert('로그인페이지로 돌아갑니다.');
   } catch (err) {
