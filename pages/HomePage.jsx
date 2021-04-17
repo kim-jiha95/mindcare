@@ -27,7 +27,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 export default function HomePage({ navigation }) {
   const goSignOut = () => {
     logout();
-    navigation.navigate('SignIn');
+    navigation.navigate('SignInPage');
   };
   return (
     <Container>
@@ -66,10 +66,6 @@ export default function HomePage({ navigation }) {
               source={require('../assets/Message.png')}
             />
           </TouchableOpacity>
-          {/* <Image
-            style={styles.Message}
-            source={require('../assets/Message.png')}
-          /> */}
         </ScrollView>
         {/* <View
           style={{

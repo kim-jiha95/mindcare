@@ -24,14 +24,14 @@ import { Avatar } from 'react-native-elements';
 
 export default class Mypage extends Component {
   render() {
-    // const goSignOut = () => {
-    //   logout();
-    //   navigation.navigate('SignIn');
-    // };
+    const goSignOut = () => {
+      logout();
+      navigation.navigate('SignIn');
+    };
     return (
       <Container>
         <HeaderComponent />
-        {/* <TouchableOpacity style={{ marginTop: 120 }} onPress={goSignOut}>
+        {/* <TouchableOpacity style={{ marginTop: 1 }} onPress={goSignOut}>
           <Text style={styles.logout}>로그아웃</Text>
         </TouchableOpacity> */}
         <View
@@ -43,7 +43,6 @@ export default class Mypage extends Component {
         >
           <View style={{ backgroundColor: 'white', flex: 1 }}></View>
           <ProgressCircle
-            // width="250"
             percent={65}
             radius={50}
             borderWidth={8}
@@ -62,26 +61,10 @@ export default class Mypage extends Component {
             shadowColor="#999"
             bgColor="#fff"
             width={'150'}
-            // containerStyle={{ marginLeft: 20 }}
           >
             <Text style={{ fontSize: 10 }}>{'다음 상담 일자'}</Text>
           </ProgressCircle>
           <View style={{ backgroundColor: 'white', flex: 1 }}></View>
-          {/* <TwoPartProgressCircle
-            categoryOnePercentage={55}
-            categoryOneColor="#12CC32"
-            categoryTwoPercentage={20}
-            categoryTwoColor="#0080ED"
-            spacer={true}
-            spacerValue={2}
-            text="75%"
-            textColor="black"
-            textSize={15}
-            textWeight="500"
-            circleRadius={60}
-            distanceFromEdge={3}
-            ringWidth={2}
-          /> */}
           <TwoPartProgressCircle
             categoryOnePercentage={50}
             categoryOneColor="#12CC32"
@@ -96,38 +79,7 @@ export default class Mypage extends Component {
             circleRadius={60}
             distanceFromEdge={3}
             ringWidth={2}
-            // containerStyle={{ marginLeft: 120 }}
           />
-          {/* <TwoPartProgressCircle
-            categoryOnePercentage={55}
-            categoryOneColor="#12CC32"
-            categoryTwoPercentage={20}
-            categoryTwoColor="#0080ED"
-            spacer={true}
-            spacerValue={2}
-            text="75%"
-            textColor="black"
-            textSize={15}
-            textWeight="500"
-            circleRadius={60}
-            distanceFromEdge={3}
-            ringWidth={2}
-          />
-          <TwoPartProgressCircle
-            categoryOnePercentage={75}
-            categoryOneColor="#12CC32"
-            categoryTwoPercentage={25}
-            categoryTwoColor="#0080ED"
-            spacer={true}
-            spacerValue={2}
-            text="40/40"
-            textColor="black"
-            textSize={15}
-            textWeight="500"
-            circleRadius={60}
-            distanceFromEdge={3}
-            ringWidth={2}
-          /> */}
         </View>
 
         <View

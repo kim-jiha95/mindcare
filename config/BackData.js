@@ -1,6 +1,4 @@
-import {
-  Alert
-} from 'react-native';
+import { Alert } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -75,8 +73,7 @@ export async function login(username, password, navigation) {
 
     if (result.data.ok == true) {
       Alert.alert(result.data.msg);
-      console.log(result.data.token);
-      await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);
+      await AsyncStorage.setItem('session', result.dat.token);
       navigation.push('TabNavigator');
       // issue
     } else if (result.data.ok == false) {
@@ -97,3 +94,59 @@ export async function logout() {
     Alert.alert('돌아와 ', err.message);
   }
 }
+
+export async function reservationday(date) {
+  try {
+    // const token = AsyncStorage.setItem(
+    //   'session',
+    //   'Bearer ' + result.data.token
+    // );
+    let token = await AsyncStorage.getItem('session');
+    let now = date;
+    const result = await axios({
+      method: 'post',
+      url: host + '/api/appointments/11/date',
+      data: {
+        date: now,
+      },
+      headers: {
+        'X-AUTH-TOKEN': token,
+      },
+    });
+
+    if (result.data.ok == true) {
+      Alert.alert(result.data.msg);
+      // console.log(result.data.token);
+      // await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);
+      // issue
+    } else if (result.data.ok == false) {
+      Alert.alert(result.data.msg);
+    }
+  } catch (err) {
+    Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
+  }
+}
+
+// export async function reservation(date, time) {
+//   try {
+//     const result = await axios({
+//       method: 'post',
+//       url: host + '/api/appointment/${doctor_id}',
+//       data: {
+//         date: date,
+//         time: time,
+//       },
+//     });
+
+//     if (result.data.ok == true) {
+//       Alert.alert(result.data.msg);
+//       console.log(result.data.token);
+//       await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);
+//       // issue
+//     } else if (result.data.ok == false) {
+//       Alert.alert(result.data.msg);
+//     }
+//   } catch (err) {
+//     Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
+//   }
+// }

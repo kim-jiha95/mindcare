@@ -1,15 +1,29 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
-import { Header, Left, Icon, Right, Button } from 'native-base';
+import { StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
+import { Header, Left, Icon, Right } from 'native-base';
+import { Avatar } from 'react-native-elements';
+import { Button, IconButton, Colors } from 'react-native-paper';
 
 const logo = require('../assets/logo.png');
 
-export default function HeaderComponent() {
+import { logout } from '../config/BackData';
+
+export default function HeaderComponent(navigation) {
+  const goSignOut = () => {
+    logout();
+    navigation.navigate('SignInPage');
+  };
   return (
     <Header style={styles.header} transparent>
       <Button transparent>
         <Image source={logo} style={styles.logoImage} />
       </Button>
+      <TouchableOpacity
+        style={{ marginTop: 10, marginLeft: 100 }}
+        onPress={goSignOut}
+      >
+        <IconButton icon="hard-hat" color={Colors.blue500} size={20} />
+      </TouchableOpacity>
     </Header>
   );
 }

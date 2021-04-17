@@ -14,10 +14,16 @@ import Loading from './Loading';
 import HeaderComponent from '../components/HeaderComponent';
 import { getDoctorDetail } from '../config/BackData';
 import { ScrollView } from 'react-native-gesture-handler';
+import { reservation } from '../config/BackData';
+import { reservationday } from '../config/BackData';
+
 const diviceWidth = Dimensions.get('window').width;
 
 export default function DoctorDetailPage({ navigation, route }) {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const [date, setdate] = useState('');
+  const [time, settime] = useState('');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -28,8 +34,14 @@ export default function DoctorDetailPage({ navigation, route }) {
   };
 
   const handleConfirm = (date) => {
+    reservationday(date);
     console.warn('A date has been picked: ', date);
+    // console.warn('a', mode);
     hideDatePicker();
+  };
+
+  const setdateFunc = (itemInputdate) => {
+    setdate(itemInputdate);
   };
 
   const DoctorInfo = route.params;
@@ -89,6 +101,8 @@ export default function DoctorDetailPage({ navigation, route }) {
             <DateTimePickerModal
               isVisible={isDatePickerVisible}
               mode="date"
+              // mode="time"
+              setFunc={setdateFunc}
               onConfirm={handleConfirm}
               onCancel={hideDatePicker}
             />
