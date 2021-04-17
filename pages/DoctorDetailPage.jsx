@@ -14,10 +14,16 @@ import Loading from './Loading';
 import HeaderComponent from '../components/HeaderComponent';
 import { getDoctorDetail, getDoctorList } from '../config/BackData';
 import { ScrollView } from 'react-native-gesture-handler';
+import { reservation } from '../config/BackData';
+import { reservationday } from '../config/BackData';
+
 const diviceWidth = Dimensions.get('window').width;
 
 export default function DoctorDetailPage({ navigation, route }) {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const [date, setdate] = useState('');
+  const [time, settime] = useState('');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -28,8 +34,14 @@ export default function DoctorDetailPage({ navigation, route }) {
   };
 
   const handleConfirm = (date) => {
+    reservationday(date);
     console.warn('A date has been picked: ', date);
+    // console.warn('a', mode);
     hideDatePicker();
+  };
+
+  const setdateFunc = (itemInputdate) => {
+    setdate(itemInputdate);
   };
 
   const DoctorInfo = route.params;
@@ -70,12 +82,31 @@ export default function DoctorDetailPage({ navigation, route }) {
             backgroundColor="black"
             onPress={showDatePicker}
           >
+            <Image
+              source={require('../assets/calendar.png')}
+              style={{
+                borderwidth: 1,
+                borderColor: 'black',
+                width: 80,
+                height: 80,
+                // left: 150,
+                marginLeft: 30,
+                marginBottom: 40,
+              }}
+              title="Show Date Picker"
+              color="#f194ff"
+              onPress={showDatePicker}
+            />
+            <Text>대면진료 예약하기</Text>
             <DateTimePickerModal
               isVisible={isDatePickerVisible}
               mode="date"
+              // mode="time"
+              setFunc={setdateFunc}
               onConfirm={handleConfirm}
               onCancel={hideDatePicker}
             />
+            {/* <Text>대면진료 예약하기</Text> */}
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -83,7 +114,7 @@ export default function DoctorDetailPage({ navigation, route }) {
             onPress={() => Linking.openURL(`tel:01051252908`)}
           >
             <Image style={styles.Dial} source={require('../assets/Dial.png')} />
-            <Text>전화로 상담하기</Text>
+            {/* <Text>전화로 상담하기</Text> */}
           </TouchableOpacity>
         </Footer>
       </ScrollView>
@@ -140,10 +171,11 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
   DayButton: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderColor: 'black',
     width: 100,
     height: 60,
     marginRight: 50,
+    marginBottom: 50,
   },
 });

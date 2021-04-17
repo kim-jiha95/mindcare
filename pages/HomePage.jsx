@@ -23,6 +23,10 @@ import { Dialog } from 'react-native-paper';
 const diviceWidth = Dimensions.get('window').width;
 
 export default function HomePage({ navigation }) {
+  const goSignOut = () => {
+    logout();
+    navigation.navigate('SignInPage');
+  };
   return (
     <Container>
       <View>
@@ -99,6 +103,13 @@ export default function HomePage({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  logout: {
+    alignSelf: 'center',
+    padding: 10,
+    borderColor: 'grey',
+    borderWidth: 1,
+    borderRadius: 10,
+  },
   Message: {
     width: 350,
     height: 300,

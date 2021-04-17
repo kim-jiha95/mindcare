@@ -27,14 +27,16 @@
     "react-native-gesture-handler": "~1.8.0",
     "react-native-gradient-buttons": "^2.0.2",
     "react-native-image-blur-loading": "^1.1.4",
-    "react-native-paper": "^4.7.2",
     "react-native-modal-datetime-picker": "^9.2.0",
+    "react-native-paper": "^4.7.2",
+    "react-native-progress-circle": "^2.1.0",
     "react-native-reanimated": "^2.0.0",
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.2",
     "react-native-switch-selector": "^2.1.4",
     "react-native-web": "~0.13.12",
-    "react-native-webview": "^11.4.0"
+    "react-native-webview": "^11.4.0",
+    "two-part-progress-circle": "^1.2.7"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

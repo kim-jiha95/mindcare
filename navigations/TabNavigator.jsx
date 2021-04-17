@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import HomePage from '../pages/HomePage';
 import DoctorPage from '../pages/DoctorPage';
+import MyPage from '../pages/MyPage';
 
 const Tabs = createBottomTabNavigator();
 
@@ -52,6 +53,7 @@ const TabNavigator = () => {
     >
       <Tabs.Screen name="Home" component={HomePage} />
       <Tabs.Screen name="Doctor" component={DoctorPage} />
+      <Tabs.Screen name="MyPage" component={MyPage} />
     </Tabs.Navigator>
   );
 };
