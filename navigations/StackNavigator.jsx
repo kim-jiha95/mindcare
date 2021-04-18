@@ -6,6 +6,7 @@ import DoctorDetailPage from '../pages/DoctorDetailPage';
 import SignInPage from '../pages/SignInPage';
 import SignUpPage from '../pages/SignUpPage';
 import SurveyLinkPage from '../pages/SurveyLinkPage';
+import MyDetailPage from '../pages/MyDetailPage';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ const StackNavigator = () => {
         headerShown: false,
       }}
     >
+      <Stack.Screen name="MyDetailPage" component={MyDetailPage} />
       <Stack.Screen name="SignInPage" component={SignInPage} />
       <Stack.Screen name="SignUpPage" component={SignUpPage} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />

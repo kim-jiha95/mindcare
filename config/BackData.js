@@ -1,6 +1,4 @@
-import {
-  Alert
-} from 'react-native';
+import { Alert } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -9,8 +7,8 @@ const host = 'http://15.165.205.40';
 // doctorlist 받아오기 (DoctorPage)
 export async function getDoctorList() {
   try {
-    const result = await axios.get(host + '/api/doctors');
-    return result.data.results;
+    const result = await axios.get(host + '/api/doctors/');
+    return result.data.doctors;
   } catch (err) {
     Alert.alert('error :(');
   }
@@ -20,7 +18,7 @@ export async function getDoctorList() {
 export async function getDoctorDetail(id) {
   try {
     const result = await axios.get(host + '/api/doctors/' + id);
-    return result.data.results;
+    return result.data.doctors;
   } catch (err) {
     Alert.alert('error :(');
   }
@@ -110,9 +108,9 @@ export async function reservationday(date) {
         'X-AUTH-TOKEN': token,
       },
     });
-    console.log(now)
-    console.log("success")
-    console.log(result.data)
+    console.log(now);
+    console.log('success');
+    console.log(result.data);
     if (result.data.ok == true) {
       Alert.alert(result.data.msg);
     } else if (result.data.ok == false) {
