@@ -1,6 +1,5 @@
 import { Container } from 'native-base';
-import React, { useRef } from 'react';
-import GradientButton from 'react-native-gradient-buttons';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -10,19 +9,19 @@ import {
   Text,
   Dimensions,
   Button,
+  Modal,
 } from 'react-native';
 
 import TestCard from '../components/TestCard';
 import HeaderComponent from '../components/HeaderComponent';
-import SurveyLinkPage from './SurveyLinkPage';
 
 import { ScrollView } from 'react-native-gesture-handler';
-import { BackgroundImage } from 'react-native-elements/dist/config';
-import { Dialog } from 'react-native-paper';
 
 import { logout } from '../config/BackData';
 
 const diviceWidth = Dimensions.get('window').width;
+
+// const [modalOpen, setModalOpen] = useState(false);
 
 export default function HomePage({ navigation }) {
   const goSignOut = () => {
@@ -104,6 +103,13 @@ export default function HomePage({ navigation }) {
           />
         </View>
 
+        {/* 심리검사들 모달창으로 띄우기 */}
+        <TouchableOpacity style={styles.ExperienceBox}>
+          <Text style={{ fontSize: 15, textAlign: 'center' }}>
+            내 상태가 궁금하신가요?
+          </Text>
+        </TouchableOpacity>
+
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <TouchableOpacity
             style={styles.ExperienceBox}
@@ -114,9 +120,15 @@ export default function HomePage({ navigation }) {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.ExperienceBox}>
-            <Text style={{ fontSize: 15, textAlign: 'center' }}>상담하기</Text>
+          <TouchableOpacity
+            style={styles.ExperienceBox}
+            onPress={() => navigation.navigate('DoctorPage')}
+          >
+            <Text style={{ fontSize: 15, textAlign: 'center' }}>
+              상담 예약하기
+            </Text>
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.ExperienceBox} onPress={goSignOut}>
             <Text style={{ fontSize: 15, textAlign: 'center' }}>로그아웃</Text>
           </TouchableOpacity>

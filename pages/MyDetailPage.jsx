@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import LiquidProgress from 'react-native-liquid-progress';
 import { Avatar } from 'react-native-elements';
 import CouncelDetailCard from '../components/CouncelDetailCard';
 
@@ -21,7 +20,7 @@ export default function MyDetailPage() {
         <Image style={styles.screen} source={require('../assets/Social.png')} />
         {/* <LiquidProgress
           backgroundColor={'black'}
-          frontWaveColor={'blue'}
+          frontWaveColor={'blue'} 
           backWaveColor={'skyblue'}
           fill={value}
           size={150}

@@ -79,6 +79,7 @@ export async function getDoctorDetail(id) {
   try {
     const result = await axios.get(host + '/api/doctors/' + id);
     return result.data.doctor;
+
   } catch (err) {
     Alert.alert('error :(');
   }
@@ -87,13 +88,13 @@ export async function getDoctorDetail(id) {
 
 
 // 날짜받아오기
-export async function reservationday(date) {
+export async function reservationday(date, id) {
   try {
     let token = await AsyncStorage.getItem('session');
     let now = JSON.stringify(date).split('T')[0].split('"')[1];
     const result = await axios({
       method: 'post',
-      url: host + '/api/appointments/11/date',
+      url: host + `/api/appointments/${id}/date`,
       data: {
         date: now,
       },
