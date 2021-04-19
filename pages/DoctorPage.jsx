@@ -16,6 +16,7 @@ import Loading from './Loading';
 
 const data = require('../data.json');
 import { getDoctorList } from '../config/BackData';
+
 export default function DoctorPage({ navigation }) {
   const [DoctorLists, setDoctorLists] = useState();
   const [ready, setReady] = useState(false);

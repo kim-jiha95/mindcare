@@ -11,7 +11,6 @@ import CouncelCard from '../components/CouncelCard';
 import HeaderComponent from '../components/HeaderComponent';
 import ProgressCircle from 'react-native-progress-circle';
 import { Avatar } from 'react-native-elements';
-import MyDetailPage from './MyDetailPage';
 
 export default class Mypage extends Component {
   render() {
@@ -33,7 +32,6 @@ export default class Mypage extends Component {
     return (
       <Container>
         <HeaderComponent />
-
         <View
           style={{
             flex: 1,

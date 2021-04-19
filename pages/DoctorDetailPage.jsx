@@ -23,6 +23,21 @@ import { reservationday } from '../config/BackData';
 const diviceWidth = Dimensions.get('window').width;
 
 export default function DoctorDetailPage({ navigation, route }) {
+  const DoctorInfo = route.params;
+
+  const [DoctorDetail, setDoctorDetail] = useState();
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    download();
+  }, []);
+
+  const download = async () => {
+    const result = await getDoctorDetail(DoctorInfo.id);
+    setDoctorDetail(result);
+    setReady(true);
+  };
+
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const [date, setdate] = useState('');
@@ -40,12 +55,16 @@ export default function DoctorDetailPage({ navigation, route }) {
 
   const handleConfirm = (date) => {
     setDatePickerVisibility(false);
-    // setModalVisible(true);
-
-    reservationday(date);
-    console.warn('A date has been picked: ', date);
+    setModalVisible(true);
+    reservationday(date, DoctorInfo.id);
+    console.log('A date has been picked: ', date);
     hideDatePicker();
   };
+
+  // // 예제코드
+  // useEffect(() => {
+  //   console.log(isDatePickerVisible);
+  // }, [isDatePickerVisible]);
 
   const setdateFunc = (itemInputdate) => {
     setdate(itemInputdate);
@@ -106,89 +125,86 @@ export default function DoctorDetailPage({ navigation, route }) {
               >
                 <View style={styles.centeredView}>
                   <View style={styles.modalView}>
-                    <View style={styles.timetable1}>
+                    <View style={styles.timetable}>
                       <TouchableOpacity>
-                        <Image
-                          style={styles.time1}
-                          source={require('../assets/rbutton1.png')}
-                        />
+                        <Text>hi</Text>
                       </TouchableOpacity>
                       <TouchableOpacity>
                         <Image
-                          style={styles.time2}
+                          style={styles.time}
                           source={require('../assets/rbutton2.png')}
                         />
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.timetable2}>
+                    <View style={styles.timetable}>
                       <TouchableOpacity>
                         <Image
-                          style={styles.time3}
+                          style={styles.time}
                           source={require('../assets/rbutton3.png')}
                         />
                       </TouchableOpacity>
                       <TouchableOpacity>
                         <Image
-                          style={styles.time4}
+                          style={styles.time}
                           source={require('../assets/rbutton4.png')}
                         />
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.timetable3}>
+                    <View style={styles.timetable}>
                       <TouchableOpacity>
                         <Image
-                          style={styles.time5}
+                          style={styles.time}
                           source={require('../assets/rbutton5.png')}
                         />
                       </TouchableOpacity>
 
                       <TouchableOpacity>
                         <Image
-                          style={styles.time6}
+                          style={styles.time}
                           source={require('../assets/rbutton6.png')}
                         />
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.timetable4}>
+                    <View style={styles.timetable}>
                       <TouchableOpacity>
                         <Image
-                          style={styles.time7}
+                          style={styles.time}
                           source={require('../assets/rbutton7.png')}
                         />
                       </TouchableOpacity>
 
                       <TouchableOpacity>
                         <Image
-                          style={styles.time8}
+                          style={styles.time}
                           source={require('../assets/rbutton8.png')}
                         />
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.timetable5}>
+                    <View style={styles.timetable}>
                       <TouchableOpacity>
                         <Image
-                          style={styles.time9}
+                          style={styles.time}
                           source={require('../assets/rbutton9.png')}
                         />
                       </TouchableOpacity>
 
                       <TouchableOpacity>
                         <Image
-                          style={styles.time10}
+                          style={styles.time}
                           source={require('../assets/rbutton10.png')}
                         />
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.timetable6}>
+                    <View style={styles.timetable}>
                       <TouchableOpacity>
                         <Image
-                          style={styles.time11}
+                          style={styles.time}
                           source={require('../assets/rbutton11.png')}
                         />
                       </TouchableOpacity>
                       <TouchableOpacity>
                         <Image
-                          style={styles.time12}
+                          style={styles.time}
                           source={require('../assets/rbutton12.png')}
                         />
                       </TouchableOpacity>
@@ -210,21 +226,29 @@ export default function DoctorDetailPage({ navigation, route }) {
               </Pressable> */}
               {/* time모달 끝 */}
             </View>
-            <Image
-              source={require('../assets/calendar.png')}
+
+            <View
               style={{
-                borderwidth: 1,
-                borderColor: 'black',
-                width: 80,
-                height: 80,
-                // left: 150,
-                marginLeft: 30,
-                marginBottom: 40,
+                width: diviceWidth * 0.3,
+                height: diviceWidth * 0.2,
+                alignSelf: 'center',
+                alignItems: 'center',
               }}
-              title="Show Date Picker"
-              color="#f194ff"
-              onPress={showDatePicker}
-            />
+            >
+              <Image
+                source={require('../assets/calendar.png')}
+                style={{
+                  width: 80,
+                  height: 80,
+                  marginLeft: 30,
+                  flex: 1,
+                  resizeMode: 'cover',
+                }}
+                title="Show Date Picker"
+                color="#f194ff"
+                onPress={showDatePicker}
+              />
+            </View>
 
             <DateTimePickerModal
               isVisible={isDatePickerVisible}
@@ -300,8 +324,6 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
   DayButton: {
-    // borderWidth: 1,
-    borderColor: 'black',
     width: 100,
     height: 60,
     marginRight: 50,
@@ -311,7 +333,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
   },
   modalView: {
     margin: 20,
@@ -332,6 +353,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
+    marginTop: 100,
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
@@ -348,46 +370,12 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
   },
-  timetable1: {
+  timetable: {
     flexDirection: 'row',
-    marginTop: 10,
+    paddingTop: 20,
+    margin: 10,
   },
-  timetable2: {
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-  timetable3: {
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-  timetable4: {
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-  timetable5: {
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-  timetable6: {
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-  time2: {
-    marginLeft: 5,
-  },
-  time4: {
-    marginLeft: 5,
-  },
-  time6: {
-    marginLeft: 5,
-  },
-  time8: {
-    marginLeft: 5,
-  },
-  time10: {
-    marginLeft: 5,
-  },
-  time12: {
+  time: {
     marginLeft: 5,
   },
 });
