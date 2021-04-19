@@ -87,7 +87,7 @@ export async function getDoctorDetail(id) {
 
 
 
-// 날짜받아오기
+// 해당 날짜의 상담가능 시간 받아오기
 export async function reservationday(date, id) {
   try {
     let token = await AsyncStorage.getItem('session');
