@@ -48,7 +48,7 @@ export default function HomePage({ navigation }) {
           />
 
           <TestCard
-            text={'성격 검사'}
+            text={'성격 유형 검사'}
             img={
               'http://tbc.imgdl.xcache.kinxcdn.com/cdn001/20200320/329370782_0321_6.jpg'
             }
