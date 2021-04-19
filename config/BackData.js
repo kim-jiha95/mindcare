@@ -8,7 +8,7 @@ const host = 'http://15.165.205.40';
 export async function getDoctorList() {
   try {
     const result = await axios.get(host + '/api/doctors/');
-    return result.data.doctors;
+    return result.data.results;
   } catch (err) {
     Alert.alert('error :(');
   }
@@ -18,7 +18,7 @@ export async function getDoctorList() {
 export async function getDoctorDetail(id) {
   try {
     const result = await axios.get(host + '/api/doctors/' + id);
-    return result.data.doctors;
+    return result.data.doctor;
   } catch (err) {
     Alert.alert('error :(');
   }

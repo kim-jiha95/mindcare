@@ -18,30 +18,30 @@ export default function MyDetailPage() {
   return (
     <Container>
       <View style={styles.container}>
-        <Image style={styles.screen} source={require('../assets/Social.png')} />
-        {/* <LiquidProgress
+        {/* <Image style={styles.screen} source={require('../assets/Social.png')} /> */}
+        <LiquidProgress
           backgroundColor={'black'}
           frontWaveColor={'blue'}
           backWaveColor={'skyblue'}
           fill={value}
           size={150}
-        > */}
-        {/* <Animated.View style={styles.row}>
+        >
+          <Animated.View style={styles.row}>
             <Text style={styles.text}>{(value * 100).toFixed(0)}%Done</Text>
           </Animated.View>
         </LiquidProgress>
-        <View style={styles.buttonLayer}> */}
-        {/* <TouchableOpacity
+        <View style={styles.buttonLayer}>
+          <TouchableOpacity
             style={styles.button}
             onPress={() => setValue(Math.random())}
           >
             <Text style={styles.buttonText}>Random</Text>
-          </TouchableOpacity> */}
-        {/* </View> */}
-        {/* <Text style={styles.title}>Liquid Progress </Text> */}
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.title}>Liquid Progress </Text>
         <StatusBar style="auto" />
       </View>
-      <CouncelDetailCard />
+      {/* <CouncelDetailCard /> */}
     </Container>
   );
 }
