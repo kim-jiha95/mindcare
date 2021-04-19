@@ -36,7 +36,6 @@ export default function DoctorDetailPage({ navigation, route }) {
   const handleConfirm = (date) => {
     reservationday(date);
     console.warn('A date has been picked: ', date);
-    // console.warn('a', mode);
     hideDatePicker();
   };
 
@@ -97,7 +96,7 @@ export default function DoctorDetailPage({ navigation, route }) {
               color="#f194ff"
               onPress={showDatePicker}
             />
-            <Text>대면진료 예약하기</Text>
+
             <DateTimePickerModal
               isVisible={isDatePickerVisible}
               mode="date"
@@ -106,7 +105,6 @@ export default function DoctorDetailPage({ navigation, route }) {
               onConfirm={handleConfirm}
               onCancel={hideDatePicker}
             />
-            {/* <Text>대면진료 예약하기</Text> */}
           </TouchableOpacity>
 
           <TouchableOpacity

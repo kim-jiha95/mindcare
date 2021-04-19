@@ -20,6 +20,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { BackgroundImage } from 'react-native-elements/dist/config';
 import { Dialog } from 'react-native-paper';
 
+import { logout } from '../config/BackData';
+
 const diviceWidth = Dimensions.get('window').width;
 
 export default function HomePage({ navigation }) {
@@ -114,6 +116,9 @@ export default function HomePage({ navigation }) {
 
           <TouchableOpacity style={styles.ExperienceBox}>
             <Text style={{ fontSize: 15, textAlign: 'center' }}>상담하기</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.ExperienceBox} onPress={goSignOut}>
+            <Text style={{ fontSize: 15, textAlign: 'center' }}>로그아웃</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

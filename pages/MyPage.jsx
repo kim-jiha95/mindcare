@@ -4,19 +4,32 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 
 import { logout } from '../config/BackData';
-import TwoPartProgressCircle from '../src/TwoPartProgressCircle';
+import Loading from './Loading';
+import CouncelCard from '../components/CouncelCard';
 
+// import {getCouncelList} from '../config/BackData'
 import HeaderComponent from '../components/HeaderComponent';
 import ProgressCircle from 'react-native-progress-circle';
 import { Avatar } from 'react-native-elements';
-import { ScrollView } from 'react-native-gesture-handler';
+import MyDetailPage from './MyDetailPage';
 
 export default class Mypage extends Component {
   render() {
-    const goSignOut = () => {
-      logout();
-      navigation.navigate('SignIn');
+    const goDetailPage = () => {
+      navigation.navigate('MyDetailPage');
     };
+    //   const [CouncelLists, setCouncelLists] = useState();
+    // const [ready, setReady] = useState(false);
+    // useEffect(() => {
+    //   download();
+    // }, []);
+
+    // const download = async () => {
+    //   const result = await getCouncelList();
+    //   setCouncelLists(result);
+    //   setReady(true);
+    // };
+
     return (
       <Container>
         <HeaderComponent />
@@ -51,202 +64,19 @@ export default class Mypage extends Component {
             <Text style={{ fontSize: 10 }}>{'다음 상담 일자'}</Text>
           </ProgressCircle>
           <View style={{ backgroundColor: 'white', flex: 1 }}></View>
-          <TwoPartProgressCircle
-            categoryOnePercentage={50}
-            categoryOneColor="#12CC32"
-            categoryTwoPercentage={12.5}
-            categoryTwoColor="#0080ED"
-            spacer={true}
-            spacerValue={2}
-            text="25/40"
-            textColor="black"
-            textSize={15}
-            textWeight="500"
-            circleRadius={60}
-            distanceFromEdge={3}
-            ringWidth={2}
-          />
         </View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            marginTop: 70,
-            marginLeft: 150,
+        <View style={styles.status}>
+          <Text style={styles.Date}>일자 </Text>
+          <Text style={styles.Time}>시간 </Text>
+          <Text style={styles.Condition}>상태 </Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+            goDetailPage;
           }}
         >
-          <Text style={{ marginTop: 30, marginRight: 10 }}>일자 </Text>
-          <Text style={{ marginLeft: 30, marginTop: 30 }}>시간 </Text>
-          <Text style={{ marginLeft: 40, marginTop: 30 }}>상태 </Text>
-        </View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            marginTop: 10,
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            onPress={() => console.log('Works!')}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            1회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-
-        <View style={styles.border}></View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            onPress={() => console.log('Works!')}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            2회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            2.17
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-
-        {/* //okay142 */}
-
-        <View style={styles.border}></View>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            onPress={() => console.log('Works!')}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            3회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-
-        <View style={styles.border}></View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            onPress={() => console.log('Works!')}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            4회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-        <View style={styles.border}></View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            onPress={() => console.log('Works!')}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            5회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-        <View style={styles.border}></View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            onPress={() => console.log('Works!')}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            6회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-        <View style={styles.border}></View>
+          <CouncelCard />
+        </TouchableOpacity>
       </Container>
     );
   }
@@ -257,5 +87,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
     borderRadius: 100,
     marginLeft: 40,
+  },
+  status: {
+    flex: 1.5,
+    flexDirection: 'row',
+    marginTop: 70,
+    marginLeft: 150,
+  },
+  Date: {
+    marginTop: 30,
+    marginRight: 10,
+  },
+  Time: {
+    marginLeft: 30,
+    marginTop: 30,
+  },
+  Condition: {
+    marginLeft: 40,
+    marginTop: 30,
   },
 });
