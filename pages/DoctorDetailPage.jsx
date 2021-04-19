@@ -40,7 +40,8 @@ export default function DoctorDetailPage({ navigation, route }) {
 
   const handleConfirm = (date) => {
     setDatePickerVisibility(false);
-    setModalVisible(true);
+    // setModalVisible(true);
+
     reservationday(date);
     console.warn('A date has been picked: ', date);
     hideDatePicker();
@@ -64,6 +65,10 @@ export default function DoctorDetailPage({ navigation, route }) {
     setDoctorDetail(result);
     setReady(true);
   };
+
+  useEffect(() => {
+    console.log(isDatePickerVisible);
+  }, [isDatePickerVisible]);
 
   return ready ? (
     <Container>
@@ -277,13 +282,14 @@ const styles = StyleSheet.create({
     height: diviceWidth * 0.2,
     alignSelf: 'center',
     alignItems: 'center',
+    marginTop: 75,
   },
   Dial: {
     width: 70,
     height: 60,
   },
   footer: {
-    marginTop: diviceWidth * 0.25,
+    marginTop: diviceWidth * 0.15,
 
     borderTopWidth: 0,
     margin: 10,
