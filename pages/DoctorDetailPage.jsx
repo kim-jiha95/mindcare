@@ -20,6 +20,23 @@ import { reservationday } from '../config/BackData';
 const diviceWidth = Dimensions.get('window').width;
 
 export default function DoctorDetailPage({ navigation, route }) {
+  const DoctorInfo = route.params;
+
+  const [DoctorDetail, setDoctorDetail] = useState();
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    download();
+  }, []);
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const download = async () => {
+    const result = await getDoctorDetail(DoctorInfo.id);
+    setDoctorDetail(result);
+    setReady(true);
+  };
+
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const [date, setdate] = useState('');
@@ -34,28 +51,14 @@ export default function DoctorDetailPage({ navigation, route }) {
   };
 
   const handleConfirm = (date) => {
-    reservationday(date);
-    console.warn('A date has been picked: ', date);
+    reservationday(date, DoctorInfo.id);
+    console.log(date);
+    console.log(setModalVisible(true));
     hideDatePicker();
   };
 
   const setdateFunc = (itemInputdate) => {
     setdate(itemInputdate);
-  };
-
-  const DoctorInfo = route.params;
-
-  const [DoctorDetail, setDoctorDetail] = useState();
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    download();
-  }, []);
-
-  const download = async () => {
-    const result = await getDoctorDetail(DoctorInfo.id);
-    setDoctorDetail(result);
-    setReady(true);
   };
 
   return ready ? (
