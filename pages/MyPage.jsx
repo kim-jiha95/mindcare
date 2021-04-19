@@ -9,18 +9,7 @@ import TwoPartProgressCircle from '../src/TwoPartProgressCircle';
 import HeaderComponent from '../components/HeaderComponent';
 import ProgressCircle from 'react-native-progress-circle';
 import { Avatar } from 'react-native-elements';
-
-// const Circle = () => {
-//   return <View style={styles.circle} />;
-// };
-// StyleSheet.create({
-//   Circle: {
-//     width: 100,
-//     height: 100,
-//     borderRadius: 100 / 2,
-//     backgroundColor: 'red',
-//   },
-// });
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default class Mypage extends Component {
   render() {
@@ -31,9 +20,6 @@ export default class Mypage extends Component {
     return (
       <Container>
         <HeaderComponent />
-        {/* <TouchableOpacity style={{ marginTop: 1 }} onPress={goSignOut}>
-          <Text style={styles.logout}>로그아웃</Text>
-        </TouchableOpacity> */}
         <View
           style={{
             flex: 1,
@@ -108,7 +94,6 @@ export default class Mypage extends Component {
             icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
             onPress={() => console.log('Works!')}
             activeOpacity={0.7}
-            // containerStyle={{ flex: 3, marginTop: 100 }}
             containerStyle={{ marginTop: 10, marginLeft: 20 }}
           />
           <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
@@ -129,7 +114,6 @@ export default class Mypage extends Component {
           style={{
             flex: 1,
             flexDirection: 'row',
-            // marginTop: 10,
           }}
         >
           <Avatar
@@ -151,12 +135,14 @@ export default class Mypage extends Component {
           </Text>
           <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
         </View>
+
+        {/* //okay142 */}
+
         <View style={styles.border}></View>
         <View
           style={{
             flex: 1,
             flexDirection: 'row',
-            // marginTop: 10,
           }}
         >
           <Avatar
@@ -185,7 +171,6 @@ export default class Mypage extends Component {
           style={{
             flex: 1,
             flexDirection: 'row',
-            // marginTop: 10,
           }}
         >
           <Avatar
@@ -213,7 +198,6 @@ export default class Mypage extends Component {
           style={{
             flex: 1,
             flexDirection: 'row',
-            // marginTop: 10,
           }}
         >
           <Avatar
@@ -241,8 +225,6 @@ export default class Mypage extends Component {
           style={{
             flex: 1,
             flexDirection: 'row',
-            // marginTop: 10,
-            position: 'center',
           }}
         >
           <Avatar
@@ -277,36 +259,3 @@ const styles = StyleSheet.create({
     marginLeft: 40,
   },
 });
-// export default function MyPage(navigation) {
-//   // const goSignOut = () => {
-//   //   logout();
-//   //   navigation.navigate('SignIn');
-//   // };
-
-//   // return (
-//   //   <Container>
-//   //     <HeaderComponent />
-
-//   //     {/* <TouchableOpacity style={{ marginTop: 20 }} onPress={goSignOut}>
-//   //       <Text style={styles.logout}>로그아웃</Text>
-//   //     </TouchableOpacity> */}
-//   //   </Container>
-//   // );
-//   render();
-//   {
-//     return (
-//       <ProgressCircle
-//         percent={30}
-//         radius={50}
-//         borderWidth={8}
-//         color="#3399FF"
-//         shadowColor="#999"
-//         bgColor="#fff"
-//       >
-//         <Text style={{ fontSize: 18 }}>{'30%'}</Text>
-//       </ProgressCircle>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({});
