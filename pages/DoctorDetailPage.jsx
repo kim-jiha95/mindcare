@@ -13,23 +13,27 @@ import {
   Linking,
   Dimensions,
 } from 'react-native';
+
+import TimeCard from '../components/TimeCard';
 import Loading from './Loading';
 import HeaderComponent from '../components/HeaderComponent';
-import { getDoctorDetail, getDoctorList } from '../config/BackData';
+import { getDoctorDetail } from '../config/BackData';
 import { ScrollView } from 'react-native-gesture-handler';
-import { reservation } from '../config/BackData';
 import { reservationday } from '../config/BackData';
+import data from '../data.json';
 
 const diviceWidth = Dimensions.get('window').width;
 
 export default function DoctorDetailPage({ navigation, route }) {
   const DoctorInfo = route.params;
 
+  // 선택한 의사의 세부정보 받아오기 ■
   const [DoctorDetail, setDoctorDetail] = useState();
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     download();
+    console.log(ReservationTime);
   }, []);
 
   const download = async () => {
@@ -37,38 +41,31 @@ export default function DoctorDetailPage({ navigation, route }) {
     setDoctorDetail(result);
     setReady(true);
   };
+  // ■■
 
+  // 데이트피커 + 데이트피커 모달 관리 ※ (함수들 잘 이해못함)
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-
-  const [date, setdate] = useState('');
-  const [time, settime] = useState('');
-
   const [modalVisible, setModalVisible] = useState(false);
-
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
-
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
-
-  const handleConfirm = (date) => {
+  const handleConfirm = async (date) => {
     setDatePickerVisibility(false);
     setModalVisible(true);
-    reservationday(date, DoctorInfo.id);
-    console.log('A date has been picked: ', date);
     hideDatePicker();
+    const gotTime = await reservationday(date, DoctorInfo.id);
+    setReservationTime(gotTime.results);
   };
 
-  // // 예제코드
-  // useEffect(() => {
-  //   console.log(isDatePickerVisible);
-  // }, [isDatePickerVisible]);
+  const [ReservationTime, setReservationTime] = useState([]);
 
   const setdateFunc = (itemInputdate) => {
     setdate(itemInputdate);
   };
+  // ※
 
   return ready ? (
     <Container>
@@ -106,90 +103,21 @@ export default function DoctorDetailPage({ navigation, route }) {
               >
                 <View style={styles.centeredView}>
                   <View style={styles.modalView}>
+                    {/* 진료시간 박스 */}
                     <View style={styles.timetable}>
-                      <TouchableOpacity>
-                        <Text>hi</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton2.png')}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.timetable}>
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton3.png')}
-                        />
-                      </TouchableOpacity>
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton4.png')}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.timetable}>
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton5.png')}
-                        />
-                      </TouchableOpacity>
+                      {ReservationTime.map((Times, i) => {
+                        return <TimeCard Times={Times} key={i} />;
+                      })}
 
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton6.png')}
-                        />
+                      <TouchableOpacity style={styles.TimeBox}>
+                        <View>
+                          <Text style={styles.TimeText}>
+                            👨‍⚕️ {ReservationTime.stringTime} ~ 10:50
+                          </Text>
+                        </View>
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.timetable}>
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton7.png')}
-                        />
-                      </TouchableOpacity>
 
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton8.png')}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.timetable}>
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton9.png')}
-                        />
-                      </TouchableOpacity>
-
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton10.png')}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.timetable}>
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton11.png')}
-                        />
-                      </TouchableOpacity>
-                      <TouchableOpacity>
-                        <Image
-                          style={styles.time}
-                          source={require('../assets/rbutton12.png')}
-                        />
-                      </TouchableOpacity>
-                    </View>
                     <Pressable
                       style={[styles.button, styles.buttonClose]}
                       onPress={() => setModalVisible(!modalVisible)}
@@ -212,8 +140,6 @@ export default function DoctorDetailPage({ navigation, route }) {
               style={{
                 width: diviceWidth * 0.3,
                 height: diviceWidth * 0.2,
-                alignSelf: 'center',
-                alignItems: 'center',
               }}
             >
               <Image
@@ -351,10 +277,32 @@ const styles = StyleSheet.create({
   },
   timetable: {
     flexDirection: 'row',
-    paddingTop: 20,
-    margin: 10,
   },
-  time: {
-    marginLeft: 5,
+  TimeBox: {
+    borderRadius: 10,
+    borderWidth: 0.5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    justifyContent: 'center',
+    backgroundColor: '#64FCD9',
+    width: diviceWidth * 0.43,
+    height: diviceWidth * 0.13,
+    margin: 10,
+    marginTop: 15,
+    marginBottom: 15,
+  },
+  TimeText: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: 'white',
+    textShadowColor: 'black',
+    textShadowOffset: { width: -1, height: 0 },
+    textShadowRadius: 10,
   },
 });

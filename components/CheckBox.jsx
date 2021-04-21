@@ -37,7 +37,6 @@ const CheckBox = (hurt) => {
       chipPressed(selected);
     }
   };
-  console.log(hurt.hurt);
 
   return (
     <Chip
