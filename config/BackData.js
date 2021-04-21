@@ -1,18 +1,11 @@
-import {
-  Alert
-} from 'react-native';
+import { Alert } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const host = 'http://15.165.205.40';
 
 // 회원가입
-export async function register(
-  username,
-  password,
-  phone,
-  navigation
-) {
+export async function register(username, password, phone, navigation) {
   try {
     const result = await axios({
       method: 'post',
@@ -79,13 +72,10 @@ export async function getDoctorDetail(id) {
   try {
     const result = await axios.get(host + '/api/doctors/' + id);
     return result.data.doctor;
-
   } catch (err) {
     Alert.alert('error :(');
   }
 }
-
-
 
 // 해당 날짜의 상담가능 시간 받아오기
 export async function reservationday(date, id) {
@@ -109,6 +99,23 @@ export async function reservationday(date, id) {
     }
   } catch (err) {
     Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
+  }
+}
+
+export async function getAppointment() {
+  try {
+    let token = await AsyncStorage.getItem('session');
+    const result = await axios({
+      method: 'get',
+      url: host + '/api/appointments',
+      headers: {
+        'X-AUTH-TOKEN': token,
+      },
+    });
+
+    return result.data.results;
+  } catch (err) {
+    Alert.alert('error :(');
   }
 }
 

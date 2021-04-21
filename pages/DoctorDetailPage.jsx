@@ -70,21 +70,6 @@ export default function DoctorDetailPage({ navigation, route }) {
     setdate(itemInputdate);
   };
 
-  const DoctorInfo = route.params;
-
-  const [DoctorDetail, setDoctorDetail] = useState();
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    download();
-  }, []);
-
-  const download = async () => {
-    const result = await getDoctorDetail(DoctorInfo.id);
-    setDoctorDetail(result);
-    setReady(true);
-  };
-
   useEffect(() => {
     console.log(isDatePickerVisible);
   }, [isDatePickerVisible]);

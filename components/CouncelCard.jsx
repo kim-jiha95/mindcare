@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
-export default function CouncelCard() {
+export default function CouncelCard({ navigation, Appointment }) {
   return (
     //  {backdata 완성시}
     // <TouchableOpacity
@@ -17,14 +17,7 @@ export default function CouncelCard() {
     //   onPress={() => navigation.navigate('MyDetailPage', CouncelList)}
     // >
     //   <View style={styles.MyCouncel} />
-    //   <Avatar
-    //     size="medium"
-    //     overlayContainerStyle={{ backgroundColor: 'white' }}
-    //     icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-    //     activeOpacity={0.7}
-    //     containerStyle={{ marginTop: 10, marginLeft: 20 }}
-    //     style={styles.leap}
-    //   />
+
     //   <Text style={styles.CouncelNum}>n회차</Text>
 
     //   <Text style={styles.CouncelDay}>1.25</Text>
@@ -33,168 +26,180 @@ export default function CouncelCard() {
     //   <View style={styles.border}></View>
     // </TouchableOpacity>
     // {하드코딩}
-    <ScrollView>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          marginTop: 10,
-        }}
-      >
-        <Avatar
-          size="medium"
-          overlayContainerStyle={{ backgroundColor: 'white' }}
-          icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-          activeOpacity={0.7}
-          containerStyle={{ marginTop: 10, marginLeft: 20 }}
-        />
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-          1회차
-        </Text>
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-          1.25
-        </Text>
-        <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-          15:30~16:20
-        </Text>
-        <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
+    <TouchableOpacity
+      style={styles.CouncelrCard}
+      onPress={() => navigation.navigate('MyDetailPage', Appointment)}
+    >
+      <View style={styles.TextBox}>
+        <Text style={styles.DoctorName}>{Appointment.date}</Text>
+        {/* <Text style={styles.DoctorSpecialties}>
+          <Text style={{ fontWeight: 'bold' }}>전문분야 :</Text>{' '}
+          {DoctorList.specialties.join(', ')}
+        </Text> */}
       </View>
+      {/* <ScrollView> */}
+      {/* <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            marginTop: 10,
+          }}
+        >
+          <Avatar
+            size="medium"
+            overlayContainerStyle={{ backgroundColor: 'white' }}
+            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
+            activeOpacity={0.7}
+            containerStyle={{ marginTop: 10, marginLeft: 20 }}
+          />
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
+            1회차
+          </Text>
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
+            1.25{Appointment.date}
+          </Text>
+          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
+            15:30~16:20
+          </Text>
+          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
+        </View>
 
-      <View style={styles.border}></View>
+        <View style={styles.border}></View>
 
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-        }}
-      >
-        <Avatar
-          size="medium"
-          overlayContainerStyle={{ backgroundColor: 'white' }}
-          icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-          activeOpacity={0.7}
-          containerStyle={{ marginTop: 10, marginLeft: 20 }}
-        />
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-          2회차
-        </Text>
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-          2.17
-        </Text>
-        <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-          15:30~16:20
-        </Text>
-        <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-      </View>
-      <View style={styles.border}></View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+          }}
+        >
+          <Avatar
+            size="medium"
+            overlayContainerStyle={{ backgroundColor: 'white' }}
+            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
+            activeOpacity={0.7}
+            containerStyle={{ marginTop: 10, marginLeft: 20 }}
+          />
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
+            2회차
+          </Text>
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
+            2.17
+          </Text>
+          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
+            15:30~16:20
+          </Text>
+          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
+        </View>
+        <View style={styles.border}></View>
 
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-        }}
-      >
-        <Avatar
-          size="medium"
-          overlayContainerStyle={{ backgroundColor: 'white' }}
-          icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-          onPress={() => console.log('Works!')}
-          activeOpacity={0.7}
-          containerStyle={{ marginTop: 10, marginLeft: 20 }}
-        />
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-          3회차
-        </Text>
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-          1.25
-        </Text>
-        <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-          15:30~16:20
-        </Text>
-        <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-      </View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+          }}
+        >
+          <Avatar
+            size="medium"
+            overlayContainerStyle={{ backgroundColor: 'white' }}
+            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
+            onPress={() => console.log('Works!')}
+            activeOpacity={0.7}
+            containerStyle={{ marginTop: 10, marginLeft: 20 }}
+          />
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
+            3회차
+          </Text>
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
+            1.25
+          </Text>
+          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
+            15:30~16:20
+          </Text>
+          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
+        </View>
 
-      <View style={styles.border}></View>
+        <View style={styles.border}></View>
 
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-        }}
-      >
-        <Avatar
-          size="medium"
-          overlayContainerStyle={{ backgroundColor: 'white' }}
-          icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-          onPress={() => console.log('Works!')}
-          activeOpacity={0.7}
-          containerStyle={{ marginTop: 10, marginLeft: 20 }}
-        />
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-          4회차
-        </Text>
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-          1.25
-        </Text>
-        <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-          15:30~16:20
-        </Text>
-        <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-      </View>
-      <View style={styles.border}></View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+          }}
+        >
+          <Avatar
+            size="medium"
+            overlayContainerStyle={{ backgroundColor: 'white' }}
+            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
+            onPress={() => console.log('Works!')}
+            activeOpacity={0.7}
+            containerStyle={{ marginTop: 10, marginLeft: 20 }}
+          />
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
+            4회차
+          </Text>
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
+            1.25
+          </Text>
+          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
+            15:30~16:20
+          </Text>
+          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
+        </View>
+        <View style={styles.border}></View>
 
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-        }}
-      >
-        <Avatar
-          size="medium"
-          overlayContainerStyle={{ backgroundColor: 'white' }}
-          icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-          onPress={() => console.log('Works!')}
-          containerStyle={{ marginTop: 10, marginLeft: 20 }}
-        />
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-          5회차
-        </Text>
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-          1.25
-        </Text>
-        <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-          15:30~16:20
-        </Text>
-        <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-      </View>
-      <View style={styles.border}></View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+          }}
+        >
+          <Avatar
+            size="medium"
+            overlayContainerStyle={{ backgroundColor: 'white' }}
+            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
+            onPress={() => console.log('Works!')}
+            containerStyle={{ marginTop: 10, marginLeft: 20 }}
+          />
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
+            5회차
+          </Text>
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
+            1.25
+          </Text>
+          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
+            15:30~16:20
+          </Text>
+          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
+        </View>
+        <View style={styles.border}></View>
 
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-        }}
-      >
-        <Avatar
-          size="medium"
-          overlayContainerStyle={{ backgroundColor: 'white' }}
-          icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-          activeOpacity={0.7}
-          containerStyle={{ marginTop: 10, marginLeft: 20 }}
-        />
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-          6회차
-        </Text>
-        <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-          1.25
-        </Text>
-        <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-          15:30~16:20
-        </Text>
-        <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-      </View>
-      <View style={styles.border}></View>
-    </ScrollView>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+          }}
+        >
+          <Avatar
+            size="medium"
+            overlayContainerStyle={{ backgroundColor: 'white' }}
+            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
+            activeOpacity={0.7}
+            containerStyle={{ marginTop: 10, marginLeft: 20 }}
+          />
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
+            6회차
+          </Text>
+          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
+            1.25
+          </Text>
+          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
+            15:30~16:20
+          </Text>
+          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
+        </View>
+        <View style={styles.border}></View>
+      </ScrollView> */}
+    </TouchableOpacity>
   );
 }
 
