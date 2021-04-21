@@ -81,7 +81,10 @@ export async function getDoctorDetail(id) {
 export async function reservationday(date, id) {
   try {
     let token = await AsyncStorage.getItem('session');
+
+    //datepicker의 시간출력값 관리(원하는string값으로 변환)
     let now = JSON.stringify(date).split('T')[0].split('"')[1];
+
     const result = await axios({
       method: 'post',
       url: host + `/api/appointments/${id}/date`,
@@ -92,11 +95,14 @@ export async function reservationday(date, id) {
         'X-AUTH-TOKEN': token,
       },
     });
+
     if (result.data.ok == true) {
-      Alert.alert(result.data.msg);
+      // console.log(result.data)
+      // Alert.alert(result.data.msg);
     } else if (result.data.ok == false) {
       Alert.alert(result.data.msg);
     }
+    return result.data;
   } catch (err) {
     Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
   }

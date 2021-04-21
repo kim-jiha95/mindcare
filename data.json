@@ -3,7 +3,9 @@
     "hurtList": [
         {
             "_id": "",
-            "title": "가족"
+            "title": "가족",
+            "stringTime" : "00:00",
+            "stringTimeEnd" : "00:00"
         },
         {
             "_id": "",
@@ -72,5 +74,14 @@
             "_id": "",
             "title": "성인발달장애"
         }
+    ],
+    "dummy":[
+        {
+            "time": "09:00:00",
+            "timeEnd": "09:50:00",
+            "stringTime": "09:00",
+            "stringTimeEnd": "09:50",
+            "possibleAppointment": true
+          }
     ]
 }

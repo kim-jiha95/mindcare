@@ -66,7 +66,6 @@ export default function DoctorPage({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
   tmphead: {
     marginTop: 70,
     textAlign: 'center',
