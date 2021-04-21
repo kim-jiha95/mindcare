@@ -33,7 +33,6 @@ export default function DoctorDetailPage({ navigation, route }) {
 
   useEffect(() => {
     download();
-    console.log(ReservationTime);
   }, []);
 
   const download = async () => {
@@ -67,9 +66,7 @@ export default function DoctorDetailPage({ navigation, route }) {
   };
   // ※
 
-  useEffect(() => {
-    console.log(isDatePickerVisible);
-  }, [isDatePickerVisible]);
+  useEffect(() => {}, [isDatePickerVisible]);
 
   return ready ? (
     <Container>
@@ -112,14 +109,6 @@ export default function DoctorDetailPage({ navigation, route }) {
                       {ReservationTime.map((Times, i) => {
                         return <TimeCard Times={Times} key={i} />;
                       })}
-
-                      <TouchableOpacity style={styles.TimeBox}>
-                        <View>
-                          <Text style={styles.TimeText}>
-                            👨‍⚕️ {ReservationTime.stringTime} ~ 10:50
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
                     </View>
 
                     <Pressable
@@ -217,19 +206,15 @@ const styles = StyleSheet.create({
     height: diviceWidth * 0.2,
     alignSelf: 'center',
     alignItems: 'center',
-    marginTop: 75,
   },
   Dial: {
-    width: 70,
-    height: 60,
+    width: 90,
+    height: 90,
   },
   footer: {
-    marginTop: diviceWidth * 0.15,
-
-    borderTopWidth: 0,
-    margin: 10,
+    marginTop: diviceWidth * 0.25,
+    height: diviceWidth * 0.3,
     backgroundColor: 'white',
-    borderBottomWidth: 0,
     shadowOffset: { height: 0, width: 0 },
     shadowOpacity: 0,
     elevation: 0,
@@ -238,7 +223,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 60,
     marginRight: 50,
-    marginBottom: 50,
+    marginTop: 20,
   },
   centeredView: {
     flex: 1,
