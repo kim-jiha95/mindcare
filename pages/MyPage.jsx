@@ -108,7 +108,7 @@ export default function Mypage({ navigation }) {
             <CouncelCard
               Appointment={Appointment}
               key={i}
-              navigation={navigation}
+              // navigation={navigation}
             />
           );
         })}
