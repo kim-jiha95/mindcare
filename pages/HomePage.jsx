@@ -96,6 +96,7 @@ export default function HomePage({ navigation }) {
           <Text style={{ fontSize: 15, textAlign: 'center' }}>
             내 상태가 궁금하신가요?
           </Text>
+          {/* aiselftest.com */}
         </TouchableOpacity>
 
         <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -170,5 +171,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignSelf: 'center',
+    marginTop: 50,
   },
 });
