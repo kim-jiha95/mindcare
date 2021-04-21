@@ -80,7 +80,7 @@ export async function getDoctorDetail(id) {
 }
 
 // 해당 날짜의 상담가능 시간 받아오기
-export async function reservationday(date, id) {
+export async function getReservationTime(date, id) {
   try {
     let token = await AsyncStorage.getItem('session');
 
@@ -107,6 +107,31 @@ export async function reservationday(date, id) {
   }
 }
 
+// 예약하기
+export async function doReservation(id, date, time, navigation) {
+  try {
+    let token = await AsyncStorage.getItem('session');
+    let now = JSON.stringify(date).split('T')[0].split('"')[1];
+
+    const result = await axios({
+      method: 'post',
+      url: host + `/api/appointments/${id}`,
+      data: {
+        date: now,
+        time: time,
+      },
+      headers: {
+        'X-AUTH-TOKEN': token,
+      },
+    });
+    Alert.alert(result.data.msg);
+    navigation.push('TabNavigator');
+  } catch (err) {
+    Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
+  }
+}
+
+// 예약목록받아오기
 export async function getAppointment() {
   try {
     let token = await AsyncStorage.getItem('session');
@@ -123,27 +148,3 @@ export async function getAppointment() {
     Alert.alert('error :(');
   }
 }
-
-// export async function reservation(date, time) {
-//   try {
-//     const result = await axios({
-//       method: 'post',
-//       url: host + '/api/appointment/${doctor_id}',
-//       data: {
-//         date: date,
-//         time: time,
-//       },
-//     });
-
-//     if (result.data.ok == true) {
-//       Alert.alert(result.data.msg);
-//       console.log(result.data.token);
-//       await AsyncStorage.setItem('session', 'Bearer ' + result.data.token);
-//       // issue
-//     } else if (result.data.ok == false) {
-//       Alert.alert(result.data.msg);
-//     }
-//   } catch (err) {
-//     Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
-//   }
-// }

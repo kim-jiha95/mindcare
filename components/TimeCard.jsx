@@ -7,23 +7,33 @@ import {
   Dimensions,
 } from 'react-native';
 const diviceWidth = Dimensions.get('window').width;
-export default function TimeCard({ Times }) {
-  useEffect(() => {
-    // console.log('me');
-    // console.log(Times);
-  }, []);
-  return (
-    <TouchableOpacity style={styles.TimeBox}>
-      <View>
-        <Text style={styles.TimeText}>
-          👨‍⚕️
-          {Times.stringTime}~{Times.stringTimeEnd}
-        </Text>
-      </View>
-    </TouchableOpacity>
-  );
-}
 
+import { doReservation } from '../config/BackData';
+
+export default function TimeCard({
+  navigation,
+  Times,
+  possible,
+  id,
+  date,
+  time,
+}) {
+  const upReservation = () => {
+    doReservation(id, date, time, navigation);
+  };
+  if (possible) {
+    return (
+      <TouchableOpacity style={styles.TimeBox} onPress={upReservation}>
+        <View>
+          <Text style={styles.TimeText}>
+            👨‍⚕️{Times.stringTime}~{Times.stringTimeEnd}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+  return <></>;
+}
 const styles = StyleSheet.create({
   TimeBox: {
     borderRadius: 10,
@@ -38,11 +48,11 @@ const styles = StyleSheet.create({
     elevation: 5,
     justifyContent: 'center',
     backgroundColor: '#64FCD9',
-    width: diviceWidth * 0.2,
+    width: diviceWidth * 0.36,
     height: diviceWidth * 0.13,
     margin: 10,
     marginTop: 15,
-    marginBottom: 15,
+    marginBottom: 20,
   },
   TimeText: {
     fontSize: 18,

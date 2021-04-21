@@ -23,7 +23,7 @@ export default function HeaderComponent(navigation) {
 const styles = StyleSheet.create({
   header: {
     flex: 1,
-    marginVertical: 30,
+    marginVertical: 40,
     alignItems: 'center',
     backgroundColor: 'white',
   },

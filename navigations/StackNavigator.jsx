@@ -7,6 +7,7 @@ import SignInPage from '../pages/SignInPage';
 import SignUpPage from '../pages/SignUpPage';
 import SurveyLinkPage from '../pages/SurveyLinkPage';
 import MyDetailPage from '../pages/MyDetailPage';
+import MyPage from '../pages/MyPage';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const StackNavigator = () => {
       <Stack.Screen name="SignUpPage" component={SignUpPage} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
       <Stack.Screen name="DoctorDetailPage" component={DoctorDetailPage} />
+      <Stack.Screen name="MyPage" component={MyPage} />
       <Stack.Screen name="MyDetailPage" component={MyDetailPage} />
       <Stack.Screen name="SurveyLinkPage" component={SurveyLinkPage} />
       <Stack.Screen name="DoctorPage" component={DoctorPage} />
