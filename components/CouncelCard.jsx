@@ -1,3 +1,4 @@
+import { Container } from 'native-base';
 import React from 'react';
 import {
   StyleSheet,
@@ -6,200 +7,56 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  Button,
 } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
 export default function CouncelCard({ navigation, Appointment }) {
   return (
-    //  {backdata 완성시}
-    // <TouchableOpacity
-    //   style={styles.CouncelCard}
-    //   onPress={() => navigation.navigate('MyDetailPage', CouncelList)}
-    // >
-    //   <View style={styles.MyCouncel} />
-
-    //   <Text style={styles.CouncelNum}>n회차</Text>
-
-    //   <Text style={styles.CouncelDay}>1.25</Text>
-    //   <Text style={styles.CouncelTime}>15:30~16:20</Text>
-    //   <Text style={styles.CouncelCondition}>☀</Text>
-    //   <View style={styles.border}></View>
-    // </TouchableOpacity>
-    // {하드코딩}
-    <TouchableOpacity
-      style={styles.CouncelrCard}
-      onPress={() => navigation.navigate('MyDetailPage', Appointment)}
-    >
-      <View style={styles.TextBox}>
-        <Text style={styles.DoctorName}>{Appointment.date}</Text>
-        {/* <Text style={styles.DoctorSpecialties}>
-          <Text style={{ fontWeight: 'bold' }}>전문분야 :</Text>{' '}
-          {DoctorList.specialties.join(', ')}
-        </Text> */}
-      </View>
-      {/* <ScrollView> */}
-      {/* <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            marginTop: 10,
-          }}
-        >
+    <View style={styles.box}>
+      <TouchableOpacity
+        style={styles.CouncelrCard}
+        onPress={() => navigation.navigate('MyDetailPage', Appointment)}
+      >
+        <View style={styles.MyBox}>
           <Avatar
             size="medium"
             overlayContainerStyle={{ backgroundColor: 'white' }}
             icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
             activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
+            containerStyle={{ marginTop: 5, marginLeft: 20 }}
           />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            1회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25{Appointment.date}
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
 
-        <View style={styles.border}></View>
+          {Appointment.complited ? (
+            <Image
+              style={styles.successbutton}
+              source={require('../assets/successbtn.png')}
+            ></Image>
+          ) : (
+            <Image
+              style={styles.successbutton}
+              source={require('../assets/waitbtn.png')}
+            ></Image>
+          )}
 
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            2회차
+          <Text style={styles.Crecord}>{Appointment.date}</Text>
+          <Text style={styles.Trecord}>
+            {Appointment.stringTime}~{Appointment.stringEndTime}
           </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            2.17
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
+          {/* <Image
+            style={styles.cancelbutton}
+            source={require('../assets/remove.png')}
+          ></Image> */}
         </View>
         <View style={styles.border}></View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            onPress={() => console.log('Works!')}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            3회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-
-        <View style={styles.border}></View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            onPress={() => console.log('Works!')}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            4회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-        <View style={styles.border}></View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            onPress={() => console.log('Works!')}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            5회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-        <View style={styles.border}></View>
-
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 10, marginLeft: 20 }}
-          />
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
-            6회차
-          </Text>
-          <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 20 }}>
-            1.25
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 15, marginLeft: 20 }}>
-            15:30~16:20
-          </Text>
-          <Text style={{ fontSize: 25, marginTop: 15, marginLeft: 40 }}>☀</Text>
-        </View>
-        <View style={styles.border}></View>
-      </ScrollView> */}
-    </TouchableOpacity>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Image
+          style={styles.cancelbutton}
+          source={require('../assets/remove.png')}
+        ></Image>
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -209,14 +66,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 10,
   },
-  leap: {
-    // size: 'medium',
-    // backgroundColor: 'white',
-    // //    iconname: 'pagelines', color: 'green', type: 'font-awesome',
-    // activeOpacity: 0.7,
-    // marginTop: 10,
-    // marginLeft: 20,
-  },
+
   CouncelNum: {
     fontSize: 20,
     marginTop: 15,
@@ -226,6 +76,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 15,
     marginLeft: 20,
+  },
+  successbutton: {
+    width: 50,
+    height: 15,
+    marginTop: 15,
   },
   CouncelTime: {
     fontSize: 10,
@@ -242,5 +97,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
     borderRadius: 100,
     marginLeft: 40,
+  },
+  MyBox: {
+    flexDirection: 'row',
+  },
+  Crecord: {
+    marginTop: 20,
+    fontSize: 10,
+    marginLeft: 10,
+  },
+  CouncelrCard: {
+    marginTop: 5,
+  },
+  Trecord: {
+    marginLeft: 10,
+    marginTop: 20,
+    fontSize: 10,
+  },
+  cancelbutton: {
+    width: 45,
+    height: 15,
+    marginTop: 20,
+    marginLeft: 20,
+  },
+  box: {
+    flexDirection: 'row',
+    // position: 'absolute',
   },
 });

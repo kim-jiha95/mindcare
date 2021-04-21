@@ -9,11 +9,9 @@ import {
   Alert,
 } from 'react-native';
 
-import { logout } from '../config/BackData';
 import Loading from './Loading';
 import CouncelCard from '../components/CouncelCard';
 
-// import {getCouncelList} from '../config/BackData'
 import HeaderComponent from '../components/HeaderComponent';
 import ProgressCircle from 'react-native-progress-circle';
 import { Avatar } from 'react-native-elements';
@@ -43,13 +41,14 @@ export default function Mypage({ navigation }) {
 
   return ready ? (
     <Container>
-      <HeaderComponent />
-
-      {/* <View
+      <View>
+        <HeaderComponent />
+      </View>
+      <View
         style={{
           flex: 1,
           flexDirection: 'row',
-          marginTop: 10,
+          marginTop: 50,
         }}
       >
         <View style={{ backgroundColor: 'white', flex: 1 }}></View>
@@ -57,64 +56,57 @@ export default function Mypage({ navigation }) {
           percent={65}
           radius={50}
           borderWidth={8}
-          color="#64FCD9"
+          color="#00f1ff"
           shadowColor="#999"
           bgColor="#fff"
         >
           <Text style={{ fontSize: 10 }}>{'평균 상담 주기'}</Text>
-          <Text style={{ fontSize: 10, marginTop: 5 }}>{'25Day'}</Text>
+          <Text style={{ fontSize: 10, marginTop: 5 }}>{'25 Day'}</Text>
         </ProgressCircle>
         <View style={{ backgroundColor: 'white', flex: 1 }}></View>
         <ProgressCircle
           percent={70}
           radius={50}
           borderWidth={8}
-          color="#64FCD9"
+          color="#00f1ff"
           shadowColor="#999"
           bgColor="#fff"
           width={'150'}
         >
           <Text style={{ fontSize: 10 }}>{'다음 상담 일자'}</Text>
-          <Text style={{ fontSize: 10, marginTop: 5 }}>{'6Day'}</Text>
+          <Text style={{ fontSize: 10, marginTop: 5 }}>{'-6 Day'}</Text>
         </ProgressCircle>
         <View style={{ backgroundColor: 'white', flex: 1 }}></View>
-      </View> */}
-      {/* <View
-        style={{
-          flex: 1,
-          marginTop: 40,
-          marginLeft: 100,
-          flexDirection: 'row',
-          position: 'absolute',
-        }}
-      >
-        <Text style={styles.Date}>일자 </Text>
-        <Text style={styles.Date}>일자 </Text>
-      </View> */}
-      {/* <View style={styles.status}>
+      </View>
+
+      <View style={styles.status}>
+        <Text style={styles.check}>진행여부 </Text>
+
         <Text style={styles.Date}>일자 </Text>
         <Text style={styles.Time}>시간 </Text>
         <Text style={styles.Condition}>상태 </Text>
-      </View> */}
+      </View>
       {/* <TouchableOpacity
         onPress={() => {
           goDetailPage;
         }}
       > */}
-      {/* <View style={styles.card}> */}
-      <ScrollView>
-        {Appointments.map((Appointment, i) => {
-          return (
-            <CouncelCard
-              Appointment={Appointment}
-              key={i}
-              // navigation={navigation}
-            />
-          );
-        })}
-      </ScrollView>
-      {/* </View> */}
-      {/* </TouchableOpacity> */}
+      <View>
+        {/* <View style={styles.card}> */}
+        <ScrollView>
+          <View style={styles.councelrecord}>
+            {Appointments.map((Appointment, i) => {
+              return (
+                <CouncelCard
+                  Appointment={Appointment}
+                  key={i}
+                  navigation={navigation}
+                />
+              );
+            })}
+          </View>
+        </ScrollView>
+      </View>
     </Container>
   ) : (
     <Loading />
@@ -128,18 +120,26 @@ const styles = StyleSheet.create({
     marginLeft: 40,
   },
   status: {
-    flex: 1.5,
+    flex: 1.0,
     flexDirection: 'row',
-    marginTop: 70,
-    marginLeft: 150,
+    marginTop: 90,
+    // marginRight: 50,
+    // marginLeft: 10,
   },
   Date: {
     marginTop: 30,
-    marginRight: 10,
+    // marginRight: 20,
+    marginLeft: 40,
   },
   Time: {
-    marginLeft: 30,
+    marginLeft: 40,
     marginTop: 30,
+  },
+  check: {
+    // marginRight: 50,
+    // marginLeft: 10,
+    marginTop: 30,
+    // postiion: 'absolute',
   },
   Condition: {
     marginLeft: 40,
@@ -147,5 +147,15 @@ const styles = StyleSheet.create({
   },
   card: {
     marginBottom: 70,
+  },
+  councelrecord: {
+    marginTop: 150,
+  },
+  status: {
+    flex: 1,
+    marginTop: 260,
+    marginLeft: 100,
+    flexDirection: 'row',
+    position: 'absolute',
   },
 });

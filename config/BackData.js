@@ -1,6 +1,4 @@
-import {
-  Alert
-} from 'react-native';
+import { Alert } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -98,7 +96,8 @@ export async function reservationday(date, id) {
       },
     });
 
-    if (result.data.ok == true) {} else if (result.data.ok == false) {
+    if (result.data.ok == true) {
+    } else if (result.data.ok == false) {
       Alert.alert(result.data.msg);
     }
     return result.data;
