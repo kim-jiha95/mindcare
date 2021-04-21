@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   ExperienceBox: {
     flex: 1,
-    marginTop: diviceWidth * 0.3,
+    marginTop: diviceWidth * 0.1,
     alignSelf: 'center',
     justifyContent: 'center',
     width: 150,
@@ -171,6 +171,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignSelf: 'center',
-    marginTop: 50,
+    marginTop: 5,
   },
 });

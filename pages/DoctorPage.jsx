@@ -34,9 +34,8 @@ export default function DoctorPage({ navigation }) {
   return ready ? (
     <Container style={styles.container}>
       <Text style={styles.tmphead}>Doctors</Text>
-
-      {/* 고민 리스트 */}
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+      <ScrollView>
+        {/* 고민 리스트 */}
         <View style={styles.ListCard}>
           {data.hurtList.map((content, i) => {
             return (
@@ -46,8 +45,6 @@ export default function DoctorPage({ navigation }) {
             );
           })}
         </View>
-      </ScrollView>
-      <ScrollView>
         {/* 상담사 리스트 */}
         {DoctorLists.map((DoctorList, i) => {
           return (
@@ -67,15 +64,15 @@ export default function DoctorPage({ navigation }) {
 
 const styles = StyleSheet.create({
   tmphead: {
-    marginTop: 70,
+    marginTop: 60,
     textAlign: 'center',
     fontSize: 30,
   },
   ListCard: {
     padding: 20,
     marginBottom: 10,
-    flex: 1,
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   ListText: {
     fontSize: 17,
