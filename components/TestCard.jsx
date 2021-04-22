@@ -8,11 +8,19 @@ import {
 } from 'react-native';
 const diviceWidth = Dimensions.get('window').width;
 
-export default function TestCard({ navigation, img, text, Link }) {
+export default function TestCard({
+  navigation,
+  img,
+  text,
+  Link,
+  setModalOpen,
+}) {
   return (
     <TouchableOpacity
       style={styles.TestCard}
-      onPress={() => navigation.navigate('SurveyLinkPage', Link)}
+      onPress={() =>
+        navigation.navigate('SurveyLinkPage', Link, setModalOpen(false))
+      }
     >
       <Image
         style={styles.TextImage}

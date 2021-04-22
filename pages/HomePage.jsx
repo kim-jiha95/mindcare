@@ -24,10 +24,6 @@ const main = require('../assets/Main.png');
 export default function HomePage({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const goSignOut = () => {
-    logout();
-    navigation.navigate('SignInPage');
-  };
   return (
     <Container>
       <HeaderComponent />
@@ -39,6 +35,7 @@ export default function HomePage({ navigation }) {
       <ScrollView>
         <Modal style={styles.modal} visible={modalOpen} animationType="slide">
           <Ionicons
+            style={styles.back}
             name="chevron-back"
             size={40}
             color="grey"
@@ -58,6 +55,7 @@ export default function HomePage({ navigation }) {
                 }
                 Link={'https://egogramtest.kr/'}
                 navigation={navigation}
+                setModalOpen={setModalOpen}
               />
 
               <TestCard
@@ -67,6 +65,7 @@ export default function HomePage({ navigation }) {
                 }
                 Link={'https://together.kakao.com/big-five'}
                 navigation={navigation}
+                setModalOpen={setModalOpen}
               />
             </View>
 
@@ -78,12 +77,14 @@ export default function HomePage({ navigation }) {
                 }
                 Link={'http://aiselftest.com/selfesteem/'}
                 navigation={navigation}
+                setModalOpen={setModalOpen}
               />
               <TestCard
                 text={'우울증 검사'}
                 img={'https://pbs.twimg.com/media/DSrgVpPU8AAkzyO.jpg'}
                 Link={'http://aiselftest.com/depressive/'}
                 navigation={navigation}
+                setModalOpen={setModalOpen}
               />
             </View>
 
@@ -95,6 +96,7 @@ export default function HomePage({ navigation }) {
                 }
                 Link={'http://aiselftest.com/burnout/'}
                 navigation={navigation}
+                setModalOpen={setModalOpen}
               />
               <TestCard
                 text={'취업스트레스 검사'}
@@ -103,6 +105,7 @@ export default function HomePage({ navigation }) {
                 }
                 Link={'http://aiselftest.com/stress/'}
                 navigation={navigation}
+                setModalOpen={setModalOpen}
               />
             </View>
           </View>
@@ -167,6 +170,9 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     borderRadius: 10,
+  },
+  back: {
+    marginTop: 50,
   },
   Message: {
     width: 350,

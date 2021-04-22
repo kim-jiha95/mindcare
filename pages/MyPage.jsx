@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   Alert,
   Button,
+  Dimensions,
   Image,
 } from 'react-native';
 
@@ -92,12 +93,12 @@ export default function Mypage({ navigation }) {
           </Text>
         </ProgressCircle>
         <View>
-          <TouchableOpacity onPress={goSignOut}>
+          {/* <TouchableOpacity onPress={goSignOut}>
             <Image
               style={styles.logoutbtn}
               source={require('../assets/logout.png')}
             ></Image>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={{ backgroundColor: 'white', flex: 1 }}></View>
       </SafeAreaView>

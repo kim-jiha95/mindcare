@@ -68,7 +68,7 @@ export default function SignInPage({ navigation }) {
           <Text style={styles.title}></Text>
           <Form style={styles.form}>
             <ItemInput
-              title={'이메일'}
+              title={'아이디'}
               type={'username'}
               setFunc={setidFunc}
               error={emailError}
