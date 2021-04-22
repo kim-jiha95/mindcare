@@ -16,8 +16,9 @@ import HeaderComponent from '../components/HeaderComponent';
 import { ScrollView } from 'react-native-gesture-handler';
 import { logout } from '../config/BackData';
 import { Ionicons } from '@expo/vector-icons';
-const diviceWidth = Dimensions.get('window').width;
+import { SimpleLineIcons } from '@expo/vector-icons';
 
+const diviceWidth = Dimensions.get('window').width;
 const main = require('../assets/Main.png');
 
 export default function HomePage({ navigation }) {
@@ -130,8 +131,8 @@ export default function HomePage({ navigation }) {
             <Text style={{ fontSize: 15, textAlign: 'center', color: 'white' }}>
               내 마음{'\n'}알아보기
             </Text>
-            {/* aiselftest.com */}
           </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.ExperienceBox}
             onPress={() => navigation.navigate('DoctorPage')}

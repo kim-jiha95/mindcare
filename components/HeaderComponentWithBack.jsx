@@ -1,40 +1,62 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
-import { Header, Left, Body, Right, Button } from 'native-base';
-import { Ionicons } from '@expo/vector-icons';
+import {
+  StyleSheet,
+  Image,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
+import { Header, Left, Icon, Right, Button } from 'native-base';
+import { SimpleLineIcons } from '@expo/vector-icons';
+
+const diviceWidth = Dimensions.get('window').width;
 
 const logo = require('../assets/logo.png');
 
-export default function HeaderComponentWithBack({ navigation }) {
+import { logout } from '../config/BackData';
+
+export default function HeaderComponentWithBack(navigation) {
+  const goSignOut = () => {
+    logout();
+    navigation.navigate('SignInPage');
+  };
   return (
     <Header style={styles.header} transparent>
-      <Left>
-        <Button onPress={() => navigation.goBack()} transparent>
-          <Ionicons name={'chevron-back'} color="grey" size={26} />
-        </Button>
-      </Left>
-      <Body>
-        <Button transparent>
-          <Image source={logo} style={styles.logoImage} />
-        </Button>
-      </Body>
-      <Right>
-        <Button transparent></Button>
-      </Right>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+        }}
+      >
+        <Image
+          style={styles.logo}
+          source={require('../assets/mlogo.png')}
+        ></Image>
+        <TouchableOpacity
+          onPress={() => goSignOut()}
+          style={{ alignItems: 'center', justifyContent: 'center' }}
+        >
+          <Text>Log Out</Text>
+        </TouchableOpacity>
+      </View>
     </Header>
   );
 }
 
 const styles = StyleSheet.create({
   header: {
-    marginVertical: 50,
-    borderBottomWidth: 2.5,
-    borderBottomColor: '#EEE',
+    height: 130,
+    flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
   },
-  logoImage: {
-    width: 110,
+  logo: {
+    marginLeft: diviceWidth * 0.13,
+    marginBottom: 10,
+    flex: 1,
     resizeMode: 'contain',
-    alignSelf: 'center',
+    width: 150,
+    height: 85,
   },
 });

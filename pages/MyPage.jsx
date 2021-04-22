@@ -14,13 +14,18 @@ import {
 
 import Loading from './Loading';
 import CouncelCard from '../components/CouncelCard';
-
+import HeaderComponentWithBack from '../components/HeaderComponentWithBack';
 import HeaderComponent from '../components/HeaderComponent';
 import ProgressCircle from 'react-native-progress-circle';
 import { Ionicons } from '@expo/vector-icons';
 
+import { Avatar } from 'react-native-elements';
 import { getAppointment } from '../config/BackData';
 import { logout } from '../config/BackData';
+
+import { SimpleLineIcons } from '@expo/vector-icons';
+
+const diviceWidth = Dimensions.get('window').width;
 
 export default function Mypage({ navigation }) {
   const [Appointments, setAppointments] = useState([]);
@@ -46,7 +51,7 @@ export default function Mypage({ navigation }) {
   return ready ? (
     <Container>
       <View>
-        <HeaderComponent />
+        <HeaderComponentWithBack />
       </View>
 
       <SafeAreaView
