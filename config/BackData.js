@@ -1,6 +1,4 @@
-import {
-  Alert
-} from 'react-native';
+import { Alert } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -19,6 +17,7 @@ export async function register(username, password, phone, navigation) {
         phone: phone,
       },
     });
+    Alert.alert(result.data.msg);
   } catch (err) {
     Alert.alert('무슨 문제가 있는 것 같아요! => ');
   }
@@ -98,7 +97,8 @@ export async function getReservationTime(date, id) {
       },
     });
 
-    if (result.data.ok == true) {} else if (result.data.ok == false) {
+    if (result.data.ok == true) {
+    } else if (result.data.ok == false) {
       Alert.alert(result.data.msg);
     }
     return result.data;
@@ -144,7 +144,6 @@ export async function getAppointment() {
     });
 
     return result.data;
-
   } catch (err) {
     Alert.alert('error :(');
   }

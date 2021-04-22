@@ -103,7 +103,7 @@ export default function SignUpPage({ navigation }) {
               setFunc={setNickName}
             /> */}
             <ItemInput
-              title={'이메일'}
+              title={'아이디'}
               // title={'이메일'}
               type={'username'}
               error={usernameError}

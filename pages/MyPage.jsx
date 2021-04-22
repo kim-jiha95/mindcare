@@ -33,11 +33,6 @@ export default function Mypage({ navigation }) {
   const [Average, setAverage] = useState([]);
   const [ready, setReady] = useState(false);
 
-  const goSignOut = () => {
-    logout();
-    navigation.navigate('SignInPage');
-  };
-
   useEffect(() => {
     download();
   }, []);
@@ -142,7 +137,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   Condition: {
-    marginLeft: 45,
+    marginLeft: 60,
   },
   card: {
     marginBottom: 70,

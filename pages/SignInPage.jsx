@@ -82,10 +82,10 @@ export default function SignInPage({ navigation }) {
           </Form>
 
           <Button full style={styles.emailSignIn} onPress={doSignIn}>
-            <Text>Email 로그인</Text>
+            <Text style={{ color: '#333', fontsize: 8 }}>ID 로그인</Text>
           </Button>
           <Button full style={styles.emailSignUp} onPress={goSignUp}>
-            <Text style={{ color: '#333' }}>회원가입</Text>
+            <Text style={{ color: '#333', fontsize: 8 }}>회원가입</Text>
           </Button>
         </Content>
       </ImageBackground>

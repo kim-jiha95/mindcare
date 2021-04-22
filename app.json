@@ -20,6 +20,11 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "co.conner.mindcare",
+      "versionCode": 1,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-3271224099084995~7199395295"
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
