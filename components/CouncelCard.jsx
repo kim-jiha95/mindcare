@@ -15,18 +15,12 @@ export default function CouncelCard({ navigation, Appointment }) {
   return (
     <View style={styles.box}>
       <TouchableOpacity
+        style={styles.councelBox}
+        style={styles.councelBox}
         style={styles.CouncelrCard}
         onPress={() => navigation.navigate('MyDetailPage', Appointment)}
       >
         <View style={styles.MyBox}>
-          <Avatar
-            size="medium"
-            overlayContainerStyle={{ backgroundColor: 'white' }}
-            icon={{ name: 'pagelines', color: 'green', type: 'font-awesome' }}
-            activeOpacity={0.7}
-            containerStyle={{ marginTop: 5, marginLeft: 20 }}
-          />
-
           {Appointment.complited ? (
             <Image
               style={styles.successbutton}
@@ -35,7 +29,7 @@ export default function CouncelCard({ navigation, Appointment }) {
           ) : (
             <Image
               style={styles.successbutton}
-              source={require('../assets/waitbtn.png')}
+              source={require('../assets/wait_btn.png')}
             ></Image>
           )}
 
@@ -43,17 +37,15 @@ export default function CouncelCard({ navigation, Appointment }) {
           <Text style={styles.Trecord}>
             {Appointment.stringTime}~{Appointment.stringEndTime}
           </Text>
-          {/* <Image
-            style={styles.cancelbutton}
-            source={require('../assets/remove.png')}
-          ></Image> */}
         </View>
         <View style={styles.border}></View>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity style={styles.cancelbtn}>
         <Image
-          style={styles.cancelbutton}
+          resizeMode="contain"
           source={require('../assets/remove.png')}
+
+          // onPress={() => deleteElement()}
         ></Image>
       </TouchableOpacity>
     </View>
@@ -78,9 +70,22 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   successbutton: {
-    width: 50,
-    height: 15,
+    // flex: 1,
+    // width: '20%',
+    marginLeft: 40,
+    width: 72,
+    height: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 15,
+  },
+  cancelbtn: {
+    flex: 1,
+    marginTop: 10,
+    width: '10%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   CouncelTime: {
     fontSize: 10,
@@ -103,7 +108,7 @@ const styles = StyleSheet.create({
   },
   Crecord: {
     marginTop: 20,
-    fontSize: 10,
+    fontSize: 12,
     marginLeft: 10,
   },
   CouncelrCard: {
@@ -112,16 +117,24 @@ const styles = StyleSheet.create({
   Trecord: {
     marginLeft: 10,
     marginTop: 20,
-    fontSize: 10,
+    fontSize: 12,
   },
   cancelbutton: {
     width: 45,
     height: 15,
-    marginTop: 20,
+    // marginTop: 20,
     marginLeft: 20,
+
+    // resizeMode: 'contain',
   },
   box: {
     flexDirection: 'row',
+    height: 60,
+    // height: '8.5%',
     // position: 'absolute',
+  },
+
+  councelBox: {
+    width: '90%',
   },
 });
