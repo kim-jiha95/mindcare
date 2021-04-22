@@ -130,8 +130,8 @@ export default function HomePage({ navigation }) {
             <Text style={{ fontSize: 15, textAlign: 'center', color: 'white' }}>
               내 마음{'\n'}알아보기
             </Text>
-            {/* aiselftest.com */}
           </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.ExperienceBox}
             onPress={() => navigation.navigate('DoctorPage')}
