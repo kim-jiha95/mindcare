@@ -7,10 +7,6 @@ const logo = require('../assets/logo.png');
 import { logout } from '../config/BackData';
 
 export default function HeaderComponent(navigation) {
-  const goSignOut = () => {
-    logout();
-    navigation.navigate('SignInPage');
-  };
   return (
     <Header style={styles.header} transparent>
       <View>
@@ -25,23 +21,22 @@ export default function HeaderComponent(navigation) {
 
 const styles = StyleSheet.create({
   header: {
-    flex: 1,
-    marginVertical: 50,
-    alignItems: 'center',
-    backgroundColor: 'white',
-    marginLeft: 100,
-    // borderWidth: 150,
-  },
-  HeaderText: {
-    fontSize: 30,
-    margin: 30,
-    textAlign: 'center',
-    color: 'black',
+    height: 130,
+    borderBottomWidth: 0.1,
+    // shadowColor: '#000',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    // elevation: 2,
   },
   logo: {
+    marginBottom: 10,
+    flex: 1,
+    resizeMode: 'contain',
     width: 150,
     height: 85,
-    // marginTop: 50,
-    marginRight: 50,
   },
 });

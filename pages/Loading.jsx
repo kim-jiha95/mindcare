@@ -5,38 +5,27 @@ import {
   StyleSheet,
   ImageBackground,
   Dimensions,
+  Image,
 } from 'react-native';
-
-const backImage = require('../assets/back.png');
-
-const WindowWidth = Dimensions.get('window').width;
-const ThumbSize = WindowWidth * 0.12;
+const main = require('../assets/Main.png');
+const diviceWidth = Dimensions.get('window').width;
 
 export default function Loading() {
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={backImage}
-        style={styles.backImage}
-      ></ImageBackground>
+      <Image source={main} style={styles.Image} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FDFBF7',
   },
-  backImage: {
-    width: WindowWidth,
-    height: WindowWidth * 2,
-    justifyContent: 'center',
-    alignSelf: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: '700',
-    textAlign: 'center',
+  Image: {
+    width: diviceWidth * 1,
+    resizeMode: 'contain',
   },
 });

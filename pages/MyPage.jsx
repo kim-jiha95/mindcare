@@ -33,12 +33,6 @@ export default function Mypage({ navigation }) {
     setReady(true);
   };
 
-  // const download = async () => {
-  //   const result = await getCouncelList();
-  //   setCouncelLists(result);
-  //   setReady(true);
-  // };
-
   return ready ? (
     <Container>
       <View>
@@ -86,27 +80,20 @@ export default function Mypage({ navigation }) {
         <Text style={styles.Time}>시간 </Text>
         <Text style={styles.Condition}>상태 </Text>
       </View>
-      {/* <TouchableOpacity
-        onPress={() => {
-          goDetailPage;
-        }}
-      > */}
-      <View>
-        {/* <View style={styles.card}> */}
-        <ScrollView>
-          <View style={styles.councelrecord}>
-            {Appointments.map((Appointment, i) => {
-              return (
-                <CouncelCard
-                  Appointment={Appointment}
-                  key={i}
-                  navigation={navigation}
-                />
-              );
-            })}
-          </View>
-        </ScrollView>
-      </View>
+
+      <ScrollView>
+        <View style={styles.councelrecord}>
+          {Appointments.map((Appointment, i) => {
+            return (
+              <CouncelCard
+                Appointment={Appointment}
+                key={i}
+                navigation={navigation}
+              />
+            );
+          })}
+        </View>
+      </ScrollView>
     </Container>
   ) : (
     <Loading />
@@ -136,10 +123,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   check: {
-    // marginRight: 50,
-    // marginLeft: 10,
     marginTop: 30,
-    // postiion: 'absolute',
   },
   Condition: {
     marginLeft: 40,
@@ -149,6 +133,7 @@ const styles = StyleSheet.create({
     marginBottom: 70,
   },
   councelrecord: {
+    flex: 1,
     marginTop: 150,
   },
   status: {

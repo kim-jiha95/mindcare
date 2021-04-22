@@ -45,6 +45,7 @@ export default function DoctorDetailPage({ navigation, route }) {
   // 데이트피커 + 데이트피커 모달 관리 ※ (함수들 잘 이해못함)
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -121,6 +122,7 @@ export default function DoctorDetailPage({ navigation, route }) {
                           id={DoctorDetail.id}
                           date={pickDate}
                           time={Times.stringTime}
+                          setModalVisible={setModalVisible}
                         />
                       );
                     })}
@@ -155,7 +157,7 @@ export default function DoctorDetailPage({ navigation, route }) {
                 color="#f194ff"
                 onPress={showDatePicker}
               />
-              <Text>달력</Text>
+              <Text>날짜 별 상담예약</Text>
             </View>
 
             <DateTimePickerModal
@@ -223,7 +225,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 60,
     marginRight: 50,
-    marginTop: 20,
+    marginTop: 10,
   },
   centeredView: {
     flex: 1,
