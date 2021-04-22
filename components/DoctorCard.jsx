@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 50,
     margin: 20,
-    borderWidth: 1,
-    borderColor: '#64FCD9',
+    borderWidth: 2,
+    borderColor: '#09C5F9',
     borderRadius: 15,
   },
   DoctorImage: {

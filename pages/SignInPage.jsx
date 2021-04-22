@@ -32,7 +32,7 @@ export default function SignInPage({ navigation }) {
         }
       });
       setReady(true);
-    }, 1000);
+    });
   }, []);
 
   const doSignIn = () => {

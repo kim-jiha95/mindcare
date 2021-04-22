@@ -15,6 +15,7 @@ import DoctorCard from '../components/DoctorCard';
 import Loading from './Loading';
 
 const data = require('../data.json');
+
 import { getDoctorList } from '../config/BackData';
 
 export default function DoctorPage({ navigation }) {
@@ -33,7 +34,9 @@ export default function DoctorPage({ navigation }) {
 
   return ready ? (
     <Container style={styles.container}>
-      <Text style={styles.tmphead}>Doctors</Text>
+      <View style={styles.headerText}>
+        <Text style={styles.tmphead}>Doctors</Text>
+      </View>
       <ScrollView>
         {/* 고민 리스트 */}
         <View style={styles.ListCard}>
@@ -63,6 +66,18 @@ export default function DoctorPage({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  headerText: {
+    height: 130,
+    borderBottomWidth: 0.1,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 2,
+  },
   tmphead: {
     marginTop: 60,
     textAlign: 'center',

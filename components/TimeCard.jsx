@@ -17,9 +17,11 @@ export default function TimeCard({
   id,
   date,
   time,
+  setModalVisible,
 }) {
   const upReservation = () => {
     doReservation(id, date, time, navigation);
+    setModalVisible(false);
   };
   if (possible) {
     return (

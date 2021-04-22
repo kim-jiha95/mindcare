@@ -29,9 +29,9 @@ const TabNavigator = () => {
           return (
             <Ionicons
               name={iconName}
-              color={focused ? '#64FCD9' : '#AEAEAE'}
+              color={focused ? '#09C5F9' : '#AEAEAE'}
               size={focused ? 28 : 26}
-            />  
+            />
           );
         },
       })}

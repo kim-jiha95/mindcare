@@ -6,9 +6,9 @@ const CheckBox = (hurt) => {
   const { chipKey, value, chipPressed, sel } = hurt;
 
   const [selected, setSelected] = useState(false);
-  const [textColor, setTextColor] = useState(`#FBA200`);
+  const [textColor, setTextColor] = useState(`#47D3AB`);
   const [style, setStyle] = useState({
-    borderColor: `#FBA200`,
+    borderColor: `#47D3AB`,
     backgroundColor: `white`,
   });
 
@@ -16,14 +16,14 @@ const CheckBox = (hurt) => {
     if (selected) {
       setTextColor(`white`);
       setStyle({
-        borderColor: `#FBA200`,
-        backgroundColor: `#FBA200`,
+        borderColor: `#47D3AB`,
+        backgroundColor: `#47D3AB`,
         margin: 5,
       });
     } else {
       setTextColor(`black`);
       setStyle({
-        borderColor: `#FBA200`,
+        borderColor: `#47D3AB`,
         backgroundColor: `transparent`,
         borderWidth: 2,
         margin: 5,
