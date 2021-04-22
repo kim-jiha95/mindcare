@@ -16,7 +16,7 @@ const logo = require('../assets/logo.png');
 
 import { logout } from '../config/BackData';
 
-export default function HeaderComponentWithBack(navigation) {
+export default function HeaderComponentWithBack({ navigation }) {
   const goSignOut = () => {
     logout();
     navigation.navigate('SignInPage');

@@ -105,7 +105,7 @@ export default function Mypage({ navigation }) {
         <Text style={styles.Condition}>상태 </Text>
       </SafeAreaView>
 
-      <View style={{ flex: 3.1 }}>
+      <View style={{ flex: 2.5 }}>
         <ScrollView>
           <View style={styles.councelrecord}>
             {Appointments.map((Appointment, i) => {
