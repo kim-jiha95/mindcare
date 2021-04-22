@@ -6,6 +6,7 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
+  SafeAreaView,
   Alert,
 } from 'react-native';
 
@@ -33,6 +34,15 @@ export default function Mypage({ navigation }) {
     setReady(true);
   };
 
+  // 삭제기능 구현,,,ing
+  // const deleteElement = (goalKey) => {
+  //   setAppointments((result) => {
+  //     return result.filter((goal) => {
+  //       return goalKey != goal.key;
+  //     });
+  //   });
+  // };
+
   // const download = async () => {
   //   const result = await getCouncelList();
   //   setCouncelLists(result);
@@ -44,7 +54,7 @@ export default function Mypage({ navigation }) {
       <View>
         <HeaderComponent />
       </View>
-      <View
+      <SafeAreaView
         style={{
           flex: 1,
           flexDirection: 'row',
@@ -77,22 +87,17 @@ export default function Mypage({ navigation }) {
           <Text style={{ fontSize: 10, marginTop: 5 }}>{'-6 Day'}</Text>
         </ProgressCircle>
         <View style={{ backgroundColor: 'white', flex: 1 }}></View>
-      </View>
-
-      <View style={styles.status}>
+        {/* </View> */}
+      </SafeAreaView>
+      <SafeAreaView style={styles.status}>
         <Text style={styles.check}>진행여부 </Text>
 
         <Text style={styles.Date}>일자 </Text>
         <Text style={styles.Time}>시간 </Text>
         <Text style={styles.Condition}>상태 </Text>
-      </View>
-      {/* <TouchableOpacity
-        onPress={() => {
-          goDetailPage;
-        }}
-      > */}
-      <View>
-        {/* <View style={styles.card}> */}
+      </SafeAreaView>
+
+      <View style={{ flex: 3.1 }}>
         <ScrollView>
           <View style={styles.councelrecord}>
             {Appointments.map((Appointment, i) => {
@@ -101,6 +106,7 @@ export default function Mypage({ navigation }) {
                   Appointment={Appointment}
                   key={i}
                   navigation={navigation}
+                  // deleteElement={deleteElement.bind(this, result.data.key)}
                 />
               );
             })}
@@ -113,48 +119,27 @@ export default function Mypage({ navigation }) {
   );
 }
 const styles = StyleSheet.create({
-  border: {
-    height: 3,
-    backgroundColor: '#f2f2f2',
-    borderRadius: 100,
-    marginLeft: 40,
-  },
-  status: {
-    flex: 1.0,
-    flexDirection: 'row',
-    marginTop: 90,
-    // marginRight: 50,
-    // marginLeft: 10,
-  },
   Date: {
-    marginTop: 30,
-    // marginRight: 20,
-    marginLeft: 40,
+    marginLeft: 20,
   },
   Time: {
     marginLeft: 40,
-    marginTop: 30,
   },
   check: {
-    // marginRight: 50,
-    // marginLeft: 10,
-    marginTop: 30,
-    // postiion: 'absolute',
+    marginLeft: 20,
   },
   Condition: {
-    marginLeft: 40,
-    marginTop: 30,
+    marginLeft: 45,
   },
   card: {
     marginBottom: 70,
   },
   councelrecord: {
-    marginTop: 150,
+    marginTop: 30,
   },
   status: {
-    flex: 1,
-    marginTop: 260,
-    marginLeft: 100,
+    marginTop: 310,
+    marginLeft: 50,
     flexDirection: 'row',
     position: 'absolute',
   },

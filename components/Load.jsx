@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function Load() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>로그인중...</Text>
+      <Text style={styles.title}>로딩중...</Text>
     </View>
   );
 }
