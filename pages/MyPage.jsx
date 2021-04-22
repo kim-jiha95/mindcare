@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Alert,
+  Button,
+  Image,
 } from 'react-native';
 
 import Loading from './Loading';
@@ -15,15 +17,20 @@ import CouncelCard from '../components/CouncelCard';
 
 import HeaderComponent from '../components/HeaderComponent';
 import ProgressCircle from 'react-native-progress-circle';
-import { Avatar } from 'react-native-elements';
-// import MyDetailPage from './MyDetailPage';
+import { Ionicons } from '@expo/vector-icons';
 
 import { getAppointment } from '../config/BackData';
+import { logout } from '../config/BackData';
 
 export default function Mypage({ navigation }) {
   const [Appointments, setAppointments] = useState([]);
   const [Average, setAverage] = useState([]);
   const [ready, setReady] = useState(false);
+
+  const goSignOut = () => {
+    logout();
+    navigation.navigate('SignInPage');
+  };
 
   useEffect(() => {
     download();
@@ -36,26 +43,12 @@ export default function Mypage({ navigation }) {
     setReady(true);
   };
 
-  // 삭제기능 구현,,,ing
-  // const deleteElement = (goalKey) => {
-  //   setAppointments((result) => {
-  //     return result.filter((goal) => {
-  //       return goalKey != goal.key;
-  //     });
-  //   });
-  // };
-
-  // const download = async () => {
-  //   const result = await getCouncelList();
-  //   setCouncelLists(result);
-  //   setReady(true);
-  // };
-
   return ready ? (
     <Container>
       <View>
         <HeaderComponent />
       </View>
+
       <SafeAreaView
         style={{
           flex: 1,
@@ -77,6 +70,7 @@ export default function Mypage({ navigation }) {
             {Average.avgPeriod} day
           </Text>
         </ProgressCircle>
+
         <View style={{ backgroundColor: 'white', flex: 1 }}></View>
         <ProgressCircle
           percent={70}
@@ -92,8 +86,15 @@ export default function Mypage({ navigation }) {
             - {Average.remainPeriod} day
           </Text>
         </ProgressCircle>
+        <View>
+          <TouchableOpacity onPress={goSignOut}>
+            <Image
+              style={styles.logoutbtn}
+              source={require('../assets/logout.png')}
+            ></Image>
+          </TouchableOpacity>
+        </View>
         <View style={{ backgroundColor: 'white', flex: 1 }}></View>
-        {/* </View> */}
       </SafeAreaView>
       <SafeAreaView style={styles.status}>
         <Text style={styles.check}>진행여부 </Text>
@@ -112,7 +113,6 @@ export default function Mypage({ navigation }) {
                   Appointment={Appointment}
                   key={i}
                   navigation={navigation}
-                  // deleteElement={deleteElement.bind(this, result.data.key)}
                   download={download}
                 />
               );
@@ -145,9 +145,10 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   status: {
-    marginTop: 310,
+    marginTop: 350,
     marginLeft: 50,
     flexDirection: 'row',
     position: 'absolute',
   },
+  logoutbtn: { width: 50, height: 50, marginTop: 70, marginLeft: 10 },
 });

@@ -16,7 +16,6 @@ export default function CouncelDetailCard() {
           activeOpacity={0.7}
         />
         <Text style={styles.counecelname1}>약물복용</Text>
-        {/* <Text style={styles.councelcontent1}>1.25555</Text> */}
       </View>
       <View style={styles.border}></View>
 
@@ -26,7 +25,6 @@ export default function CouncelDetailCard() {
           overlayContainerStyle={{ backgroundColor: 'white' }}
           icon={{ name: 'star', color: 'orange', type: 'font-awesome' }}
           activeOpacity={0.7}
-          //   containerStyle={{ marginTop: 10, marginLeft: 20 }}
         />
         <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
           약물복용
@@ -43,7 +41,6 @@ export default function CouncelDetailCard() {
           overlayContainerStyle={{ backgroundColor: 'white' }}
           icon={{ name: 'star', color: 'orange', type: 'font-awesome' }}
           activeOpacity={0.7}
-          //   containerStyle={{ marginTop: 10, marginLeft: 20 }}
         />
         <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
           약물복용
@@ -60,7 +57,6 @@ export default function CouncelDetailCard() {
           overlayContainerStyle={{ backgroundColor: 'white' }}
           icon={{ name: 'star', color: 'orange', type: 'font-awesome' }}
           activeOpacity={0.7}
-          //   containerStyle={{ marginTop: 10, marginLeft: 20 }}
         />
         <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
           약물복용
@@ -76,7 +72,6 @@ export default function CouncelDetailCard() {
           overlayContainerStyle={{ backgroundColor: 'white' }}
           icon={{ name: 'star', color: 'orange', type: 'font-awesome' }}
           activeOpacity={0.7}
-          //   containerStyle={{ marginTop: 10, marginLeft: 20 }}
         />
         <Text style={{ fontSize: 20, marginTop: 15, marginLeft: 5 }}>
           약물복용
@@ -97,35 +92,30 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   mycouncel1: {
-    // flex: 0.8,
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#64FCD9',
     borderRadius: 15,
   },
   mycouncel2: {
-    // flex: 0.8,
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#64FCD9',
     borderRadius: 15,
   },
   mycouncel3: {
-    // flex: 0.8,
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#64FCD9',
     borderRadius: 15,
   },
   mycouncel4: {
-    // flex: 0.8,
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#64FCD9',
     borderRadius: 15,
   },
   mycouncel5: {
-    // flex: 0.8,
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#64FCD9',
@@ -134,11 +124,9 @@ const styles = StyleSheet.create({
   counecelname1: {
     fontSize: 20,
     marginTop: 55,
-    // marginLeft: 5,
   },
   counecelcontent1: {
     fontSize: 120,
     marginTop: 55,
-    // marginRight: 55,
   },
 });

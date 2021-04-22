@@ -147,23 +147,6 @@ export async function getAppointment() {
     Alert.alert('error :(');
   }
 }
-// 상담 시간
-// export async function getTime() {
-//   try {
-//     let token = await AsyncStorage.getItem('session');
-//     const result = await axios({
-//       method: 'get',
-//       url: host + '/api/appointments',
-//       headers: {
-//         'X-AUTH-TOKEN': token,
-//       },
-//     });
-
-//     return result.data;
-//   } catch (err) {
-//     Alert.alert('error :(');
-//   }
-// }
 
 export async function doRemove(appointmentId) {
   try {

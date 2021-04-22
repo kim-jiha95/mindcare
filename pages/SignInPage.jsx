@@ -48,8 +48,6 @@ export default function SignInPage({ navigation }) {
       setPasswordError('');
     }
     login(username, password, navigation);
-    // navigation.navigate('TabNavigator');
-    // issue
   };
   const setidFunc = (itemInputid) => {
     setusername(itemInputid);

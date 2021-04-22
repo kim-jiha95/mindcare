@@ -27,7 +27,7 @@ export default function CouncelCard({ navigation, Appointment, download }) {
         onPress={() => navigation.navigate('MyDetailPage', Appointment)}
       >
         <View style={styles.MyBox}>
-          {Appointment.complited ? (
+          {Appointment.completed ? (
             <Image
               style={styles.successbutton}
               source={require('../assets/successbtn.png')}
@@ -74,8 +74,6 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   successbutton: {
-    // flex: 1,
-    // width: '20%',
     marginLeft: 40,
     width: 72,
     height: 25,
@@ -126,16 +124,12 @@ const styles = StyleSheet.create({
   cancelbutton: {
     width: 45,
     height: 15,
-    // marginTop: 20,
-    marginLeft: 20,
 
-    // resizeMode: 'contain',
+    marginLeft: 20,
   },
   box: {
     flexDirection: 'row',
     height: 60,
-    // height: '8.5%',
-    // position: 'absolute',
   },
 
   councelBox: {
