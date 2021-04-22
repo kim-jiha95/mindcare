@@ -1,6 +1,4 @@
-import {
-  Alert
-} from 'react-native';
+import { Alert } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -98,7 +96,8 @@ export async function getReservationTime(date, id) {
       },
     });
 
-    if (result.data.ok == true) {} else if (result.data.ok == false) {
+    if (result.data.ok == true) {
+    } else if (result.data.ok == false) {
       Alert.alert(result.data.msg);
     }
     return result.data;
@@ -143,8 +142,42 @@ export async function getAppointment() {
       },
     });
 
-    return result.data.results;
+    return result.data;
   } catch (err) {
     Alert.alert('error :(');
+  }
+}
+// 상담 시간
+// export async function getTime() {
+//   try {
+//     let token = await AsyncStorage.getItem('session');
+//     const result = await axios({
+//       method: 'get',
+//       url: host + '/api/appointments',
+//       headers: {
+//         'X-AUTH-TOKEN': token,
+//       },
+//     });
+
+//     return result.data;
+//   } catch (err) {
+//     Alert.alert('error :(');
+//   }
+// }
+
+export async function doRemove(appointmentId) {
+  try {
+    let token = await AsyncStorage.getItem('session');
+
+    const result = await axios({
+      method: 'delete',
+      url: host + `/api/appointments/${appointmentId}`,
+      headers: {
+        'X-AUTH-TOKEN': token,
+      },
+    });
+    Alert.alert(result.data.msg);
+  } catch (err) {
+    Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
   }
 }
