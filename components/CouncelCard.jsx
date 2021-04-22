@@ -9,9 +9,15 @@ import {
   Image,
   Button,
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { doRemove } from '../config/BackData';
 
-export default function CouncelCard({ navigation, Appointment }) {
+export default function CouncelCard({ navigation, Appointment, download }) {
+  const remove = async () => {
+    await doRemove(Appointment.id);
+
+    download();
+  };
+
   return (
     <View style={styles.box}>
       <TouchableOpacity
@@ -40,12 +46,10 @@ export default function CouncelCard({ navigation, Appointment }) {
         </View>
         <View style={styles.border}></View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.cancelbtn}>
+      <TouchableOpacity onPress={() => remove()} style={styles.cancelbtn}>
         <Image
           resizeMode="contain"
           source={require('../assets/remove.png')}
-
-          // onPress={() => deleteElement()}
         ></Image>
       </TouchableOpacity>
     </View>

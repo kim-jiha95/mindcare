@@ -22,6 +22,7 @@ import { getAppointment } from '../config/BackData';
 
 export default function Mypage({ navigation }) {
   const [Appointments, setAppointments] = useState([]);
+  const [Average, setAverage] = useState([]);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -30,7 +31,8 @@ export default function Mypage({ navigation }) {
 
   const download = async () => {
     const result = await getAppointment();
-    setAppointments(result);
+    setAverage(result);
+    setAppointments(result.results);
     setReady(true);
   };
 
@@ -71,7 +73,9 @@ export default function Mypage({ navigation }) {
           bgColor="#fff"
         >
           <Text style={{ fontSize: 10 }}>{'평균 상담 주기'}</Text>
-          <Text style={{ fontSize: 10, marginTop: 5 }}>{'25 Day'}</Text>
+          <Text style={{ fontSize: 10, marginTop: 5 }}>
+            {Average.avgPeriod} day
+          </Text>
         </ProgressCircle>
         <View style={{ backgroundColor: 'white', flex: 1 }}></View>
         <ProgressCircle
@@ -84,7 +88,9 @@ export default function Mypage({ navigation }) {
           width={'150'}
         >
           <Text style={{ fontSize: 10 }}>{'다음 상담 일자'}</Text>
-          <Text style={{ fontSize: 10, marginTop: 5 }}>{'-6 Day'}</Text>
+          <Text style={{ fontSize: 10, marginTop: 5 }}>
+            - {Average.remainPeriod} day
+          </Text>
         </ProgressCircle>
         <View style={{ backgroundColor: 'white', flex: 1 }}></View>
         {/* </View> */}
@@ -107,6 +113,7 @@ export default function Mypage({ navigation }) {
                   key={i}
                   navigation={navigation}
                   // deleteElement={deleteElement.bind(this, result.data.key)}
+                  download={download}
                 />
               );
             })}
