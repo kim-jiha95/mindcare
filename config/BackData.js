@@ -79,7 +79,7 @@ export async function getDoctorDetail(id) {
 }
 
 // 해당 날짜의 상담가능 시간 받아오기
-export async function getReservationTime(date, id) {
+export async function getReservationTime(navigation, date, id) {
   try {
     let token = await AsyncStorage.getItem('session');
 
@@ -100,10 +100,12 @@ export async function getReservationTime(date, id) {
     if (result.data.ok == true) {
     } else if (result.data.ok == false) {
       Alert.alert(result.data.msg);
+      navigation.push('DoctorDetailPage');
     }
     return result.data;
   } catch (err) {
-    Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
+    // Alert.alert('무슨 문제가 있는 것 같아요! => ', err.message);
+    // navigation.push('DoctorDetailPage');
   }
 }
 
