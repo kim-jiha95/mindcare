@@ -8,17 +8,21 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Alert,
+  Dimensions,
 } from 'react-native';
 
 import Loading from './Loading';
 import CouncelCard from '../components/CouncelCard';
-
+import HeaderComponentWithBack from '../components/HeaderComponentWithBack';
 import HeaderComponent from '../components/HeaderComponent';
 import ProgressCircle from 'react-native-progress-circle';
-import { Avatar } from 'react-native-elements';
-// import MyDetailPage from './MyDetailPage';
 
+import { Avatar } from 'react-native-elements';
 import { getAppointment } from '../config/BackData';
+
+import { SimpleLineIcons } from '@expo/vector-icons';
+
+const diviceWidth = Dimensions.get('window').width;
 
 export default function Mypage({ navigation }) {
   const [Appointments, setAppointments] = useState([]);
@@ -36,26 +40,12 @@ export default function Mypage({ navigation }) {
     setReady(true);
   };
 
-  // 삭제기능 구현,,,ing
-  // const deleteElement = (goalKey) => {
-  //   setAppointments((result) => {
-  //     return result.filter((goal) => {
-  //       return goalKey != goal.key;
-  //     });
-  //   });
-  // };
-
-  // const download = async () => {
-  //   const result = await getCouncelList();
-  //   setCouncelLists(result);
-  //   setReady(true);
-  // };
-
   return ready ? (
     <Container>
       <View>
-        <HeaderComponent />
+        <HeaderComponentWithBack />
       </View>
+
       <SafeAreaView
         style={{
           flex: 1,

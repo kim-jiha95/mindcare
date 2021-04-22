@@ -27,7 +27,7 @@ export default function CouncelCard({ navigation, Appointment, download }) {
         onPress={() => navigation.navigate('MyDetailPage', Appointment)}
       >
         <View style={styles.MyBox}>
-          {Appointment.complited ? (
+          {Appointment.completed ? (
             <Image
               style={styles.successbutton}
               source={require('../assets/successbtn.png')}

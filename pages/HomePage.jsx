@@ -16,8 +16,9 @@ import HeaderComponent from '../components/HeaderComponent';
 import { ScrollView } from 'react-native-gesture-handler';
 import { logout } from '../config/BackData';
 import { Ionicons } from '@expo/vector-icons';
-const diviceWidth = Dimensions.get('window').width;
+import { SimpleLineIcons } from '@expo/vector-icons';
 
+const diviceWidth = Dimensions.get('window').width;
 const main = require('../assets/Main.png');
 
 export default function HomePage({ navigation }) {
