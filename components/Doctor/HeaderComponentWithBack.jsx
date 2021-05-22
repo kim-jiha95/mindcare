@@ -12,9 +12,9 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 
 const diviceWidth = Dimensions.get('window').width;
 
-const logo = require('../assets/logo.png');
+const logo = require('../../assets/logo.png');
 
-import { logout } from '../config/BackData';
+import { logout } from '../../config/BackData';
 
 export default function HeaderComponentWithBack({ navigation }) {
   const goSignOut = () => {
@@ -31,7 +31,7 @@ export default function HeaderComponentWithBack({ navigation }) {
       >
         <Image
           style={styles.logo}
-          source={require('../assets/mlogo.png')}
+          source={require('../../assets/mlogo.png')}
         ></Image>
         <TouchableOpacity
           onPress={() => goSignOut()}

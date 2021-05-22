@@ -12,11 +12,11 @@ import {
   Body,
   Right,
 } from 'native-base';
-const bImage = require('../assets/background.png');
-import ItemInput from '../components/ItemInput';
+const bImage = require('../../assets/background.png');
+import ItemInput from '../../components/Login/ItemInput';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { register } from '../config/BackData';
+import { register } from '../../config/BackData';
 
 export default function SignUpPage({ navigation }) {
   // const [nickName, setNickName] = useState('');

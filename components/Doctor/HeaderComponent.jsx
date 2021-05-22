@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import { Header, Left, Icon, Right, Button } from 'native-base';
 
-const logo = require('../assets/logo.png');
+const logo = require('../../assets/logo.png');
 
-import { logout } from '../config/BackData';
+import { logout } from '../../config/BackData';
 
 export default function HeaderComponent({ navigation }) {
   const goSignOut = () => {
@@ -16,7 +16,7 @@ export default function HeaderComponent({ navigation }) {
       <View>
         <Image
           style={styles.logo}
-          source={require('../assets/mlogo.png')}
+          source={require('../../assets/mlogo.png')}
         ></Image>
       </View>
     </Header>

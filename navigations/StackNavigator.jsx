@@ -1,13 +1,13 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
-import DoctorPage from '../pages/DoctorPage';
-import DoctorDetailPage from '../pages/DoctorDetailPage';
-import SignInPage from '../pages/SignInPage';
-import SignUpPage from '../pages/SignUpPage';
-import SurveyLinkPage from '../pages/SurveyLinkPage';
-import MyDetailPage from '../pages/MyDetailPage';
-import MyPage from '../pages/MyPage';
+import DoctorPage from '../pages/Doctor/DoctorPage';
+import DoctorDetailPage from '../pages/Doctor/DoctorDetailPage';
+import SignInPage from '../pages/Login/SignInPage';
+import SignUpPage from '../pages/Login/SignUpPage';
+import SurveyLinkPage from '../pages/Home/SurveyLinkPage';
+import MyDetailPage from '../pages/MyPage/MyDetailPage';
+import MyPage from '../pages/MyPage/MyPage';
 
 const Stack = createStackNavigator();
 

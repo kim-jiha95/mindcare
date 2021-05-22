@@ -7,7 +7,7 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-const main = require('../assets/Main.png');
+const main = require('../../assets/Main.png');
 const diviceWidth = Dimensions.get('window').width;
 
 export default function Loading() {

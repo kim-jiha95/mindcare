@@ -8,16 +8,16 @@ import {
   Alert,
   Image,
 } from 'react-native';
-import HeaderComponent from '../components/HeaderComponent';
-import MyCouncelCard from '../components/MyCouncelCard';
-import SurveyLinkPage from './SurveyLinkPage';
+import HeaderComponent from '../../components/Doctor/HeaderComponent';
+import MyCouncelCard from '../../components/MyPage/MyCouncelCard';
+import SurveyLinkPage from '../Home/SurveyLinkPage';
 
 export default function MyDetailPage() {
   return (
     <Container>
       <Image
         style={styles.mainimg}
-        source={require('../assets/cute.png')}
+        source={require('../../assets/cute.png')}
       ></Image>
       <MyCouncelCard />
     </Container>

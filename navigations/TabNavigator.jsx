@@ -4,9 +4,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Ionicons } from '@expo/vector-icons';
 
-import HomePage from '../pages/HomePage';
-import DoctorPage from '../pages/DoctorPage';
-import MyPage from '../pages/MyPage';
+import HomePage from '../pages/Home/HomePage';
+import DoctorPage from '../pages/Doctor/DoctorPage';
+// import MyPage from '../pages/Mypage/MyPage';
+
+import MyPage from '../pages/MyPage/MyPage';
 
 const Tabs = createBottomTabNavigator();
 

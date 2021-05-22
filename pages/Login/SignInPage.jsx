@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, ImageBackground } from 'react-native';
-import ItemInput from '../components/ItemInput';
-import { login } from '../config/BackData';
+import ItemInput from '../../components/Login/ItemInput';
+import { login } from '../../config/BackData';
 import { Container, Content, Thumbnail, Text, Form, Button } from 'native-base';
-import Load from '../components/Load';
+import Load from '../../components/Load';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const bImage = require('../assets/background.png');
-const logo = require('../assets/logo.png');
+const bImage = require('../../assets/background.png');
+const logo = require('../../assets/logo.png');
 
 export default function SignInPage({ navigation }) {
   const [ready, setReady] = useState(false);

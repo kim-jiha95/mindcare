@@ -9,14 +9,14 @@ import {
   ScrollView,
   Dimensions,
 } from 'react-native';
-import HeaderComponent from '../components/HeaderComponent';
-import CheckBox from '../components/CheckBox';
-import DoctorCard from '../components/DoctorCard';
-import Loading from './Loading';
+import HeaderComponent from '../../components/Doctor/HeaderComponent';
+import CheckBox from '../../components/Doctor/CheckBox';
+import DoctorCard from '../../components/Doctor/DoctorCard';
+import Loading from '../utilities/Loading';
 
-const data = require('../data.json');
+const data = require('../../data.json');
 
-import { getDoctorList } from '../config/BackData';
+import { getDoctorList } from '../../config/BackData';
 
 export default function DoctorPage({ navigation }) {
   const [DoctorLists, setDoctorLists] = useState();

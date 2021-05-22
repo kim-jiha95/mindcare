@@ -11,15 +11,15 @@ import {
   Button,
   Modal,
 } from 'react-native';
-import TestCard from '../components/TestCard';
-import HeaderComponent from '../components/HeaderComponent';
+import TestCard from '../../components/Doctor/TestCard';
+import HeaderComponent from '../../components/Doctor/HeaderComponent';
 import { ScrollView } from 'react-native-gesture-handler';
-import { logout } from '../config/BackData';
+import { logout } from '../../config/BackData';
 import { Ionicons } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 const diviceWidth = Dimensions.get('window').width;
-const main = require('../assets/Main.png');
+const main = require('../../assets/Main.png');
 
 export default function HomePage({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);

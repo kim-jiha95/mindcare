@@ -9,7 +9,7 @@ import {
   Image,
   Button,
 } from 'react-native';
-import { doRemove } from '../config/BackData';
+import { doRemove } from '../../config/BackData';
 
 export default function CouncelCard({ navigation, Appointment, download }) {
   const remove = async () => {
@@ -30,12 +30,12 @@ export default function CouncelCard({ navigation, Appointment, download }) {
           {Appointment.completed ? (
             <Image
               style={styles.successbutton}
-              source={require('../assets/successbtn.png')}
+              source={require('../../assets/successbtn.png')}
             ></Image>
           ) : (
             <Image
               style={styles.successbutton}
-              source={require('../assets/wait_btn.png')}
+              source={require('../../assets/wait_btn.png')}
             ></Image>
           )}
 
@@ -49,7 +49,7 @@ export default function CouncelCard({ navigation, Appointment, download }) {
       <TouchableOpacity onPress={() => remove()} style={styles.cancelbtn}>
         <Image
           resizeMode="contain"
-          source={require('../assets/remove.png')}
+          source={require('../../assets/remove.png')}
         ></Image>
       </TouchableOpacity>
     </View>

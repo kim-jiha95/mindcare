@@ -13,16 +13,15 @@ import {
   Image,
 } from 'react-native';
 
-import Loading from './Loading';
-import CouncelCard from '../components/CouncelCard';
-import HeaderComponentWithBack from '../components/HeaderComponentWithBack';
-import HeaderComponent from '../components/HeaderComponent';
+import Loading from '../utilities/Loading';
+import CouncelCard from '../../components/Doctor/CouncelCard';
+import HeaderComponentWithBack from '../../components/Doctor/HeaderComponentWithBack';
+import HeaderComponent from '../../components/Doctor/HeaderComponent';
 import ProgressCircle from 'react-native-progress-circle';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Avatar } from 'react-native-elements';
-import { getAppointment } from '../config/BackData';
-import { logout } from '../config/BackData';
+import { getAppointment } from '../../config/BackData';
+import { logout } from '../../config/BackData';
 
 import { SimpleLineIcons } from '@expo/vector-icons';
 

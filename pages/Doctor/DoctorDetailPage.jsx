@@ -14,13 +14,12 @@ import {
   Dimensions,
 } from 'react-native';
 
-import TimeCard from '../components/TimeCard';
-import Loading from './Loading';
-import HeaderComponent from '../components/HeaderComponent';
-import { getDoctorDetail } from '../config/BackData';
+import TimeCard from '../../components/Doctor/TimeCard';
+import Loading from '../utilities/Loading';
+import HeaderComponent from '../../components/Doctor/HeaderComponent';
+import { getDoctorDetail } from '../../config/BackData';
 import { ScrollView } from 'react-native-gesture-handler';
-import { getReservationTime } from '../config/BackData';
-import data from '../data.json';
+import { getReservationTime } from '../../config/BackData';
 
 const diviceWidth = Dimensions.get('window').width;
 
@@ -145,7 +144,7 @@ export default function DoctorDetailPage({ navigation, route }) {
               }}
             >
               <Image
-                source={require('../assets/calendar.png')}
+                source={require('../../assets/calendar.png')}
                 style={{
                   width: 60,
                   height: 60,
@@ -173,7 +172,10 @@ export default function DoctorDetailPage({ navigation, route }) {
             style={styles.Dialbtn}
             onPress={() => Linking.openURL(`tel:01051252908`)}
           >
-            <Image style={styles.Dial} source={require('../assets/Dial.png')} />
+            <Image
+              style={styles.Dial}
+              source={require('../../assets/Dial.png')}
+            />
             <Text>전화로 상담예약</Text>
           </TouchableOpacity>
         </Footer>

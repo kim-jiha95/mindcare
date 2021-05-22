@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 const diviceWidth = Dimensions.get('window').width;
 
-import { doReservation } from '../config/BackData';
+import { doReservation } from '../../config/BackData';
 
 export default function TimeCard({
   navigation,
